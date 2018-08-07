@@ -1,4 +1,10 @@
+<?php
+echo 'Hello Villag!';
+?>
 <html>
 <head><title>news!</title></head>
-<body></body>
+<link rel='stlyesheet' type='text/css' a href='style/style.css'>
+<body>
+Hello vilag!
+</body>
 <html>
