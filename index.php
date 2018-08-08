@@ -7,10 +7,12 @@
 <body>
 Hello vilag!
 <div name='left' align='left'>
-Username: <input type='text' name='loginAccountName'> </br>
-Password: <input type='text' name='loginPassword'> </br>
-<input type='submit' name='Login' value='Login'>
-<input type='submit' name='SignUp' value='SignUp'>
+    <form action="login.php" method="$_GET">
+        Username: <input type='text' name='loginAccountName'> </br>
+        Password: <input type='password' name='loginPassword'> </br>
+        <input type='submit' name='login' value='Login'>
+        <input type='submit' name='signUp' value='SignUp'>
+    </form>
 </div>
 
 <div name='mid'align='center'></div>
