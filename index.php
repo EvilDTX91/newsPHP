@@ -7,12 +7,12 @@
 <body>
 Hello vilag!
 <div name="left" align="left">
-    <form action="login.php" method="$_GET">
+    <form action="login.php" method="get">
         Username: <input type="text" name="loginUserName"> </br>
         Password: <input type="password" name="loginPassword"> </br>
         <input type="submit" name="Login" value="Login">
     </form>
-    <form action="signUp.php" method="$_GET">
+    <form action="signUp.php" method="get">
         <input type="submit" name="SignUp" value="SignUp">
     </form>
 </div>
