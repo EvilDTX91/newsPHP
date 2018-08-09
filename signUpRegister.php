@@ -2,19 +2,25 @@
 include ("settings/connect.php");
 if($_GET["sendSignUp"])
 {
-    $username = "signUpUserName";
-    $password = "signUpPassword";
-    $email = "signUpEmail";
-    $firstname = "signUpFirstName";
-    $lastname = "signUpLastName";
-    $born = "signUpBornYear . signUpBornMonth . signUpBornDay";
+    $username = $_GET["signUpUserName"];
+    $password = $_GET["signUpPassword"];
+    $email = $_GET["signUpEmail"];
+    $firstname = $_GET["signUpFirstName"];
+    $lastname = $_GET["signUpLastName"];
+    $born = $_GET["signUpBornYear"] . $_GET["signUpBornMonth"] . $_GET["signUpBornDay"];
 
-    $sql = "INSERT INTO useres (username,userpassword,email,firstname,lastname,born)
+    $sql = "INSERT INTO users (username,userpassword,email,firstname,lastname,born)
             VALUES ('$username','$password','$email','$firstname','$lastname','$born')";
 
-    $connect->query($sql);
-
-    echo "<a href = index.php><button>Back!</button>";
+    if($connect->query($sql) === TRUE)
+    {
+        echo "New record created succcesfully!";
+    }
+    else
+    {
+        echo "Error: " . $sql . "</br>" . $connect->error;
+    }
 }
+echo "<a href = index.php><button>Back!</button>";
 $connect->close();
 ?>

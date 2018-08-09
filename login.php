@@ -7,7 +7,10 @@ if($_GET["Login"]) {
     if ($username != null && $password != null) {
 
         $sql = "SELECT * FROM users WHERE username = '$username' AND userpassword = '$password'";
+
         $result = $connect->query($sql);
+        $update = "UPDATE users SET lastlogin=now() WHERE username='$username' AND userpassword='$password' ";
+        $connect->query($update);
 
         if($result->num_rows > 0)
         {

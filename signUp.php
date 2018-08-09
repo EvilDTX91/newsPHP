@@ -14,6 +14,6 @@ if($_GET["SignUp"])
     echo "<input type='submit' name='sendSignUp' value='Register'>";
     echo "<input type='reset' name='resetSignUp' value='Reset'>";
     echo "</form>";
-    echo "<a href = index.php><button>Back!</button>";
 }
+echo "<a href = index.php><button>Back!</button>";
 ?>
