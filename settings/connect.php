@@ -1,13 +1,13 @@
 <?php
 $host = "localhost";
-$username = "newsAdmin";
+$username = "root";
 $userpassword = "";
 $database = "newsphp";
 
-$connection = new mysqli($host,$username,$userpassword);
+$connect = new mysqli($host,$username,$userpassword,$database);
 
-if($connection->connect_error){
+if($connect->connect_error){
 	die("Connection failed: " . $connect->connect_error);
 }
-echo "Connection succesfull!";
+//echo "Connection succesfull!";
 ?>

@@ -1,11 +1,9 @@
-<?php require ('settings/connect.php')?>
 <!DOCTYPE html>
 <html>
 <head><title>news!</title>
 <link rel="stylesheet" type="text/css" a href="style/style.css">
 </head>
 <body>
-Hello vilag!
 <div name="left" align="left">
     <form action="login.php" method="get">
         Username: <input type="text" name="loginUserName"> </br>
