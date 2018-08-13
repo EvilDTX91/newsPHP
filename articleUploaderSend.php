@@ -16,11 +16,13 @@ if($_GET["userSendNews"])
     }
 
     $sql = "INSERT INTO articles (authorID,article,title)
-    VALUES ('$authorID','$title','$article')";
+    VALUES ('$authorID','$article','$title')";
 
     if($connect->query($sql))
     {
         echo "Upload completed!";
     }
+
+    echo "</br><a href = index.php><button>Back!</button>";
 }
 ?>
