@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head><title>news!</title>
-<link rel="stylesheet" type="text/css" a href="style/style.css">
+<head>
+    <meta charset="UTF-8">
+    <title>news!</title>
+    <link rel="stylesheet" type="text/css" a href="style/style.css">
 </head>
 <body>
 <div name="left" align="left">
@@ -15,7 +17,9 @@
     </form>
 </div>
 
-<div name="mid" align="center"></div>
+<div name="mid" align="center">
+   <?php include ("news.php"); ?>
+</div>
 
 <div name="right" align="right"></div>
 </body>
