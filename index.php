@@ -23,9 +23,9 @@
 
 <div name="right" align="right">
     <form action="articleUploader.php" method="get">
-    <input type="button" name="userAdatlap" value="Adatlap">
-    <input type="button" name="userSendNews" value="Hír beküldése">
-    <input type="button" name="userLogOut" value="Kijelentkezés">
+    <input type="submit" name="userAdatlap" value="Adatlap">
+    <input type="submit" name="userSendNews" value="Hír beküldése">
+    <input type="submit" name="userLogOut" value="Kijelentkezés">
     </form>
 </div>
 </body>
