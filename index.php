@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start();?>
+<?php require ("Settings/connect.php");?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +9,7 @@
 </head>
 <body>
 <div name="left" align="left">
-    <form action="login.php" method="get">
-        Username: <input type="text" name="loginUserName"> </br>
-        Password: <input type="password" name="loginPassword"> </br>
-        <input type="submit" name="Login" value="Login">
-    </form>
-    <form action="signUp.php" method="get">
-        <input type="submit" name="SignUp" value="SignUp">
-    </form>
+    <?php include("start.php"); ?>
 </div>
 
 <div name="right" align="right">

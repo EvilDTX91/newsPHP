@@ -4,6 +4,8 @@ $username = "root";
 $userpassword = "";
 $database = "newsphp";
 
+$_SESSION["userLoggedIn"] = false;
+
 $connect = new mysqli($host,$username,$userpassword,$database);
 
 if($connect->connect_error){

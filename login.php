@@ -29,6 +29,7 @@ if($_GET["Login"]) {
                 $_SESSION["firstname"] = $row["firstname"];
                 $_SESSION["email"] = $row["email"];
                 $_SESSION["born"] = $row["born"];
+                $_SESSION["userLoggedIn"] = true;
             }
         }
         else
