@@ -21,6 +21,12 @@
    <?php include ("news.php"); ?>
 </div>
 
-<div name="right" align="right"></div>
+<div name="right" align="right">
+    <form action="articleUploader.php" method="get">
+    <input type="button" name="userAdatlap" value="Adatlap">
+    <input type="button" name="userSendNews" value="Hír beküldése">
+    <input type="button" name="userLogOut" value="Kijelentkezés">
+    </form>
+</div>
 </body>
 <html>
