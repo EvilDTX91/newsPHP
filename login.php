@@ -22,6 +22,13 @@ if($_GET["Login"]) {
                 echo "</br>Born: " . $row["born"];
                 echo "</br>Registered: " . $row["regist"];
                 echo "</br>Last Here: " . $row["lastlogin"] . "</br>";
+
+                $_SESSION["username"] = $row["username"];
+                $_SESSION["id"] = $row["id"];
+                $_SESSION["lastname"] = $row["lastname"];
+                $_SESSION["firstname"] = $row["firstname"];
+                $_SESSION["email"] = $row["email"];
+                $_SESSION["born"] = $row["born"];
             }
         }
         else

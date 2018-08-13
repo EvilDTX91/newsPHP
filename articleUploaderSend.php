@@ -25,4 +25,5 @@ if($_GET["userSendNews"])
 
     echo "</br><a href = index.php><button>Back!</button>";
 }
+$connect->close();
 ?>
