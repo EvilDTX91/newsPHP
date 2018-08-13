@@ -1,5 +1,4 @@
 <?php session_start();?>
-<?php require ("Settings/connect.php");?>
 <!DOCTYPE html>
 <html>
 <head>
