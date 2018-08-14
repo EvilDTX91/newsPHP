@@ -1,4 +1,5 @@
 <?php session_start();?>
+<?php $content = null;?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +9,17 @@
 </head>
 <body>
 <div name="left1" align="left">
-    <?php include("start.php"); ?>
-</div>
-<div name="left2" align="left">
-    <?php echo $content ?>
+    <?php
+    if($content == null)
+    {
+        include("start.php");
+        echo $content;
+    }
+    else
+    {
+        echo $content;
+    }
+    ?>
 </div>
 
 <div name="right" align="right">

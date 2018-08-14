@@ -1,3 +1,4 @@
+<?php session_start();?>
 <?php include ('settings/connect.php') ?>
 <?php
 if(isset($_POST["Login"]))
@@ -46,6 +47,6 @@ if(isset($_POST["Login"]))
         echo "Missing username or password! </br>";
     }
 }
-//echo "<a href = index.php> <button>Back!</button>";
+echo "<a href = index.php> <button>Back!</button>";
 $connect->close();
 ?>

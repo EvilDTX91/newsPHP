@@ -6,7 +6,7 @@ if($_SESSION["userLoggedIn"] == false)
                 Password: <input type='password' name='loginPassword'></br>
                 <input type='submit' name='Login' value='Login'>
                 </form>
-                <form action='signUp.php' method='get'>
+                <form action='signUp.php' method='post'>
                 <input type='submit' name='SignUp' value='SignUp'>
                 </form>";
 

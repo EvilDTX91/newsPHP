@@ -1,10 +1,10 @@
 <?php
 //echo "Hello! " . $_SESSION["firstname"];
 
-$content = "<form method='post'>
-            <input type='submit' name='userProfile' value='Profil'>
-            <input type='submit' name='userSendNews' value='Hír beküldése'>
-            <input type='submit' name='userLogOut' value='Kijelentkezés'>
+$content = "<form action='articleUploader.php' method='get'>
+            <input type='submit' name='userProfile' value='Profil' formaction='profile.php'></br>
+            <input type='submit' name='userSendNews' value='Hír beküldése'></br>
+            <input type='submit' name='userLogOut' value='Kijelentkezés' formaction='index.php'></br>
             </form>";
 echo $content;
 
