@@ -8,21 +8,23 @@ if(isset($_GET["Login"]))
     if ($username != null && $password != null) {
 
         $sql = "SELECT * FROM users WHERE username = '$username' AND userpassword = '$password'";
-
         $result = $connect->query($sql);
+
         $update = "UPDATE users SET lastlogin=now() WHERE username='$username' AND userpassword='$password' ";
         $connect->query($update);
+
+        include ("menu.php");
 
         if($result->num_rows > 0)
         {
             while($row = $result->fetch_assoc())
             {
-                echo "</br>Username: " . $row["username"] . "(ID: " . $row["id"] . ")";
+                /*echo "</br>Username: " . $row["username"] . "(ID: " . $row["id"] . ")";
                 echo "</br>Name: " . $row["lastname"] . " " . $row["firstname"];
                 echo "</br>E-mail: " . $row["email"];
                 echo "</br>Born: " . $row["born"];
                 echo "</br>Registered: " . $row["regist"];
-                echo "</br>Last Here: " . $row["lastlogin"] . "</br>";
+                echo "</br>Last Here: " . $row["lastlogin"] . "</br>";*/
 
                 $_SESSION["username"] = $row["username"];
                 $_SESSION["id"] = $row["id"];
@@ -30,6 +32,8 @@ if(isset($_GET["Login"]))
                 $_SESSION["firstname"] = $row["firstname"];
                 $_SESSION["email"] = $row["email"];
                 $_SESSION["born"] = $row["born"];
+                $_SESSION["registered"] = $row["regist"];
+                $_SESSION["lastlogin"] = $row["lastlogin"];
                 $_SESSION["userLoggedIn"] = true;
             }
         }
@@ -41,6 +45,6 @@ if(isset($_GET["Login"]))
         echo "Missing username or password! </br>";
     }
 }
-echo "<a href = index.php> <button>Back!</button>";
+//echo "<a href = index.php> <button>Back!</button>";
 $connect->close();
 ?>

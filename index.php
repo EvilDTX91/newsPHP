@@ -9,6 +9,7 @@
 <body>
 <div name="left" align="left">
     <?php include("start.php"); ?>
+    <?php echo $content ?>
 </div>
 
 <div name="right" align="right">

@@ -1,6 +1,6 @@
 <?php
 include ("settings/connect.php");
-if($_GET["sendSignUp"])
+if(isset($_GET["sendSignUp"]))
 {
     $username = mysqli_real_escape_string($connect, $_GET["signUpUserName"]);
     $password = mysqli_real_escape_string($connect, $_GET["signUpPassword"]);
