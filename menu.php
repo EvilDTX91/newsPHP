@@ -7,9 +7,9 @@ echo "<input type='submit' name='userLogOut' value='Kijelentkezés'>";
 echo "</form>";
 ?>
 <?php
-if($_GET["userLogOut"])
+if(isset($_GET["userLogOut"]))
 {
     echo "Viszlát " . $_SESSION["firstname"];
-    //session_destroy();
+    session_destroy();
 }
 ?>

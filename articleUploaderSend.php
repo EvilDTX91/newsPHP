@@ -1,6 +1,6 @@
 <?php
 include ("Settings/connect.php");
-if($_GET["userSendNews"])
+if(isset($_GET["userSendNews"]))
 {
     $title= mysqli_real_escape_string($connect, $_GET['userWriteTitle']);
     $article = mysqli_real_escape_string($connect, $_GET['userWriteNews']);

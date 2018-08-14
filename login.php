@@ -1,6 +1,7 @@
 <?php include ('settings/connect.php') ?>
 <?php
-if($_GET["Login"]) {
+if(isset($_GET["Login"]))
+{
     $username = $_GET["loginUserName"];
     $password = $_GET["loginPassword"];
 
@@ -39,8 +40,7 @@ if($_GET["Login"]) {
     } else {
         echo "Missing username or password! </br>";
     }
-
-    echo "<a href = index.php> <button>Back!</button>";
 }
+echo "<a href = index.php> <button>Back!</button>";
 $connect->close();
 ?>
