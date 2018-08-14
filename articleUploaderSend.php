@@ -1,9 +1,9 @@
 <?php
 include ("Settings/connect.php");
-if(isset($_GET["userSendNews"]))
+if(isset($_POST["userSendNews"]))
 {
-    $title= mysqli_real_escape_string($connect, $_GET['userWriteTitle']);
-    $article = mysqli_real_escape_string($connect, $_GET['userWriteNews']);
+    $title= mysqli_real_escape_string($connect, $_POST['userWriteTitle']);
+    $article = mysqli_real_escape_string($connect, $_POST['userWriteNews']);
 
     $sql = "SELECT id,username FROM users WHERE id='1' ";
     $result = $connect->query($sql);

@@ -1,7 +1,7 @@
 <?php
-if(isset($_GET["userSendNews"]))
+if(isset($_POST["userSendNews"]))
 {
-    $content = "<form action='articleUploaderSend.php' method='get'>
+    $content = "<form action='articleUploaderSend.php' method='post'>
                 Title: <input type='text' name='userWriteTitle'></br>
                 Article: <input type='text' name='userWriteNews'></br>
                 <input type='reset' name='reset' value='Cancel'>

@@ -1,9 +1,9 @@
 <?php include ('settings/connect.php') ?>
 <?php
-if(isset($_GET["Login"]))
+if(isset($_POST["Login"]))
 {
-    $username = $_GET["loginUserName"];
-    $password = $_GET["loginPassword"];
+    $username = $_POST["loginUserName"];
+    $password = $_POST["loginPassword"];
 
     if ($username != null && $password != null) {
 
@@ -27,6 +27,7 @@ if(isset($_GET["Login"]))
                 echo "</br>Last Here: " . $row["lastlogin"] . "</br>";*/
 
                 $_SESSION["username"] = $row["username"];
+                $_SESSION["password"] = $row["userpassword"];
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["lastname"] = $row["lastname"];
                 $_SESSION["firstname"] = $row["firstname"];

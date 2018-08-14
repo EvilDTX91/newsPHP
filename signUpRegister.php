@@ -1,13 +1,14 @@
 <?php
-include ("settings/connect.php");
-if(isset($_GET["sendSignUp"]))
+if(isset($_POST["sendSignUp"]))
 {
-    $username = mysqli_real_escape_string($connect, $_GET["signUpUserName"]);
-    $password = mysqli_real_escape_string($connect, $_GET["signUpPassword"]);
-    $email = mysqli_real_escape_string($connect, $_GET["signUpEmail"]);
-    $firstname = mysqli_real_escape_string($connect, $_GET["signUpFirstName"]);
-    $lastname = mysqli_real_escape_string($connect, $_GET["signUpLastName"]);
-    $born = mysqli_real_escape_string($connect, $_GET["signUpBornYear"] . $_GET["signUpBornMonth"] . $_GET["signUpBornDay"]);
+    $username = mysqli_real_escape_string($connect, $_POST["signUpUserName"]);
+    $password = mysqli_real_escape_string($connect, $_POST["signUpPassword"]);
+    $email = mysqli_real_escape_string($connect, $_POST["signUpEmail"]);
+    $firstname = mysqli_real_escape_string($connect, $_POST["signUpFirstName"]);
+    $lastname = mysqli_real_escape_string($connect, $_POST["signUpLastName"]);
+    $born = mysqli_real_escape_string($connect, $_POST["signUpBornYear"] . $_POST["signUpBornMonth"] . $_POST["signUpBornDay"]);
+
+    include ("settings/connect.php");
 
     $sql = "INSERT INTO users (username,userpassword,email,firstname,lastname,born)
             VALUES ('$username','$password','$email','$firstname','$lastname','$born')";

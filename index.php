@@ -7,8 +7,10 @@
     <link rel="stylesheet" type="text/css" a href="style/style.css">
 </head>
 <body>
-<div name="left" align="left">
+<div name="left1" align="left">
     <?php include("start.php"); ?>
+</div>
+<div name="left2" align="left">
     <?php echo $content ?>
 </div>
 

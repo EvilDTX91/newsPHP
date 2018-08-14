@@ -1,7 +1,7 @@
 <?php
-if(isset($_GET["SignUp"]))
+if(isset($_POST["SignUp"]))
 {
-    $content = "<form action='signUpRegister.php' method='get'>
+    $content = "<form action='signUpRegister.php' method='post'>
     Firstname: <input type='text' name='signUpFirstName'> </br>
     Lastname: <input type='text' name='signUpLastName'> </br>
     Username: <input type='text' name='signUpUserName'> </br>
