@@ -1,11 +1,19 @@
 <?php session_start();?>
 <?php
-$content = "Username: " . $_SESSION["username"] . " (ID: " . $_SESSION["id"] . ")
+if($_SESSION["userLoggedIn"])
+{
+    $content = null;
+    $content .= "Username: " . $_SESSION["username"] . " (ID: " . $_SESSION["id"] . ")
             </br>Name: " . $_SESSION["lastname"] . $_SESSION["firstname"] . "
             </br>E-mail: " . $_SESSION["email"] . "
             </br>Born: " . $_SESSION["born"] . "
             </br>Registered: " . $_SESSION["registered"] . "
             </br>Last Here: " . $_SESSION["lastlogin"] . "</br>";
-echo $content;
+    echo $content;
+}
+else
+{
+    echo "Kérem jelentkezzen be a tartalom eléréséhez.(Profil)</br>";
+}
 echo "<a href='index.php'> <button>Back!</button>";
 ?>

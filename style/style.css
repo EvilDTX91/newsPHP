@@ -1,8 +1,17 @@
 body {
 	background-color: powderblue;
 	color: #990000;
-	}
-.left1{
+}
+
+menuleft1 {
+	height: 200px;
+	width: 200px;
 	background-color: coral;
-	border: 1px solid #3A5675;
+	color: chartreuse;
+}
+
+menuleft3 {
+	height: 200px;
+	width: 200px;
+	background-color: coral;
 }

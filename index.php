@@ -7,19 +7,23 @@
     <link rel="stylesheet" type="text/css" a href="style/style.css">
 </head>
 <body>
-<div id="left1" name="left1" align="left">
+<div id="menuleft1" align="left">
     <?php
     if($content == null)
     {
         include("start.php");
-        echo $content;
+        //echo $content;
     }
     else
     {
         echo $content;
     }
     ?>
+    <div id="menuleft3" align="left">
+        Hello!
+    </div>
 </div>
+
 
 <div name="right" align="right">
     <form action="articleUploader.php" method="get">

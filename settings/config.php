@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION = array();
+//$_SESSION = array();
 
 define('WWWROOT', 'http://localhost/phpHome/newsphp/');
 define('FILEROOT', 'D:/Programozas/xampp/htdocs/phpHome/newsphp/');

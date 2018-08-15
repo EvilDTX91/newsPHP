@@ -18,5 +18,6 @@ if(isset($_POST["userLogOut"]))
     echo "Viszlát " . $_SESSION["firstname"];
     session_destroy();
     $_SESSION = array();
+    //include(index.php);
 }
 ?>

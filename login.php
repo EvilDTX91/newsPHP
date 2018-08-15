@@ -14,7 +14,9 @@ if(isset($_POST["Login"]))
         $update = "UPDATE users SET lastlogin=now() WHERE username='$username' AND userpassword='$password' ";
         $connect->query($update);
 
-        include ("menu.php");
+        $content = null;
+        $content .= include ("menu.php");
+        //echo $content;
 
         if($result->num_rows > 0)
         {
@@ -47,6 +49,6 @@ if(isset($_POST["Login"]))
         echo "Missing username or password! </br>";
     }
 }
-echo "<a href = index.php> <button>Back!</button>";
+echo "<a href ='index.php'><button>Back!</button>";
 $connect->close();
 ?>
