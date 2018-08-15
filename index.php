@@ -1,5 +1,4 @@
-<?php session_start();?>
-<?php $content = null;?>
+<?php include("Settings/config.php");?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +7,7 @@
     <link rel="stylesheet" type="text/css" a href="style/style.css">
 </head>
 <body>
-<div name="left1" align="left">
+<div id="left1" name="left1" align="left">
     <?php
     if($content == null)
     {

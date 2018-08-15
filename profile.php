@@ -7,5 +7,5 @@ $content = "Username: " . $_SESSION["username"] . " (ID: " . $_SESSION["id"] . "
             </br>Registered: " . $_SESSION["registered"] . "
             </br>Last Here: " . $_SESSION["lastlogin"] . "</br>";
 echo $content;
-echo "<a href = index.php> <button>Back!</button>";
+echo "<a href='index.php'> <button>Back!</button>";
 ?>

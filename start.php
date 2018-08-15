@@ -19,9 +19,11 @@ if($_SESSION["userLoggedIn"] == false)
     echo "<input type='submit' name='SignUp' value='SignUp'>";
     echo "</form>";*/
 }
+/*
 if($_SESSION["userLoggedIn"] == true)
 {
     echo "Hello " . $_SESSION["firstname"];
     include("menu.php");
 }
+*/
 ?>
