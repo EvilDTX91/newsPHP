@@ -11,7 +11,7 @@
     <?php
     /*if($content == null)
     {
-        include("start.php");
+        include("login.php");
         //echo $content;
     }
     else

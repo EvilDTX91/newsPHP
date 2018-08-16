@@ -22,6 +22,6 @@ if($_SESSION["userLoggedIn"] === true)
 else
     {
         $content=null;
-        include('start.php');
+        include('login.php');
     }
 ?>

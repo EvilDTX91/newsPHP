@@ -5,7 +5,7 @@
             <input type='submit' name='userSendNews' value='Hír beküldése'></br>
             <input type='submit' name='userLogOut' value='Kijelentkezés' formaction='index.php'></br>
             </form>";
-    //echo $content;
+    echo $content;
 /*echo "<form method='get'>";
 echo "<input type='submit' name='userAdatlap' value='Adatlap'>";
 echo "<input type='submit' name='userSendNews' value='Hír beküldése'>";
@@ -33,6 +33,6 @@ if(isset($_GET["userLogOut"]))
         $connect->close();
         session_destroy();
         $_SESSION = array();
-    //include(index.php);
+        include(index.php);
 }
 ?>
