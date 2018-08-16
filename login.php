@@ -3,6 +3,7 @@
 <?php
 if(isset($_POST["Login"]))
 {
+    $sessionID = session_id();
     $username = $_POST["loginUserName"];
     $password = $_POST["loginPassword"];
 
@@ -13,6 +14,10 @@ if(isset($_POST["Login"]))
 
         $update = "UPDATE users SET lastlogin=now() WHERE username='$username' AND userpassword='$password' ";
         $connect->query($update);
+
+        $sessionDB = "INSERT INTO sessions(sessionID,username,userPW)
+                      VALUES ('$session','$username','$password')";
+        $connect->query($sessionDB);
 
         $content = null;
         $content .= include ("menu.php");
@@ -45,9 +50,10 @@ if(isset($_POST["Login"]))
         {
             echo "Result 0!</br>";
         }
-    } else {
+    } else
+        {
         echo "Missing username or password! </br>";
-    }
+        }
 }
 echo "<a href ='index.php'><button>Back!</button>";
 $connect->close();

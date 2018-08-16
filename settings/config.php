@@ -7,5 +7,6 @@ define('FILEROOT', 'D:/Programozas/xampp/htdocs/phpHome/newsphp/');
 
 require('settings/connect.php');
 
+require('logincheck.php');
 $content = null;
 ?>
