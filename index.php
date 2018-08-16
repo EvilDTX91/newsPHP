@@ -18,7 +18,6 @@
     {
         echo $content;
     }*/
-    include('loginCheck.php');
     include('page.php');
     ?>
     <div id="menuleft3" align="left">
