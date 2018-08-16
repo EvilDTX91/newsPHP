@@ -9,7 +9,7 @@
 <body>
 <div id="menuleft1" align="left">
     <?php
-    if($content == null)
+    /*if($content == null)
     {
         include("start.php");
         //echo $content;
@@ -17,7 +17,9 @@
     else
     {
         echo $content;
-    }
+    }*/
+    include('loginCheck.php');
+    include('page.php');
     ?>
     <div id="menuleft3" align="left">
         Hello!

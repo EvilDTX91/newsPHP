@@ -1,8 +1,9 @@
 <?php
-if($_SESSION["userLoggedIn"] == false)
-{
+if($_SESSION["userLoggedIn"] === false) {
+
+    echo $content . " working?!";
     $content = null;
-    $content .= "<form action='login.php' method='post'>
+    $content = "<form action='login.php' method='post'>
                 Username:<input type='text' name='loginUserName'></br> 
                 Password: <input type='password' name='loginPassword'></br>
                 <input type='submit' name='Login' value='Login'>
@@ -10,8 +11,8 @@ if($_SESSION["userLoggedIn"] == false)
                 <form method='post'>
                 <input type='submit' name='SignUp' value='SignUp'>
                 </form>";
-    echo $content;
-
+    //echo $content;
+}
     /*echo "<form action='login.php' method='get'>";
     echo "Username:<input type='text' name='loginUserName'></br>";
     echo "Password: <input type='password' name='loginPassword'></br>";
@@ -20,7 +21,6 @@ if($_SESSION["userLoggedIn"] == false)
     echo "<form action='signUp.php' method='get'>";
     echo "<input type='submit' name='SignUp' value='SignUp'>";
     echo "</form>";*/
-}
 /*
 if($_SESSION["userLoggedIn"] == true)
 {

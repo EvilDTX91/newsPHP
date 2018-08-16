@@ -1,13 +1,27 @@
 <?php
-$sql = "Select * FROM sessions WHERE username='$username'";
-
-if($connect->query($sql))
+if($_SESSION["userLoggedIn"] === true)
 {
-    inculde('menu.php');
+    $username = $_SESSION["username"];
+    $sql = "Select username FROM sessions WHERE username='$username'";
+    $result = $connect->query($sql);
+
+    if($result->num_rows > 0)
+    {
+        while($row = $result->fetch_assoc())
+        {
+            if($row == $username)
+            {
+                $content = null;
+                echo $row . "</br>";
+                include('menu.php');
+            }
+        }
+    }
+
 }
 else
-{
-    include('start.php');
-}
-
+    {
+        $content=null;
+        include('start.php');
+    }
 ?>

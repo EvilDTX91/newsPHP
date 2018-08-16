@@ -4,6 +4,7 @@
 if(isset($_POST["Login"]))
 {
     $sessionID = session_id();
+    echo session_id();
     $username = $_POST["loginUserName"];
     $password = $_POST["loginPassword"];
 
@@ -15,12 +16,12 @@ if(isset($_POST["Login"]))
         $update = "UPDATE users SET lastlogin=now() WHERE username='$username' AND userpassword='$password' ";
         $connect->query($update);
 
-        $sessionDB = "INSERT INTO sessions(sessionID,username,userPW)
-                      VALUES ('$session','$username','$password')";
+        $sessionDB = "INSERT INTO sessions(session,username,userPW)
+                      VALUES ('$sessionID','$username','$password')";
         $connect->query($sessionDB);
 
         $content = null;
-        $content .= include ("menu.php");
+        $content = include ("index.php");
         //echo $content;
 
         if($result->num_rows > 0)
