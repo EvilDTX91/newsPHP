@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" a href="style/style.css">
 </head>
 <body>
-<div id="headLogo"><a href="index.php"><img src="pictures/logo1.jpg"></a></div>
+<div id="headLogo" align="center"><a href="index.php"><img src="pictures/logo1.jpg"></a></div>
 <div id="menuleft1" align="left">
     <?php
     /*if($content == null)
