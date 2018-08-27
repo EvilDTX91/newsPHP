@@ -1,14 +1,14 @@
 <?php
 if($_SESSION["userLoggedIn"] === false) {
 
-    echo $content . " working?!";
+    //echo $content . " working?! LOGIN";
     $content = null;
     $content = "<form action='' method='post'>
                 Username:<input type='text' name='loginUserName'></br> 
                 Password: <input type='password' name='loginPassword'></br>
                 <input type='submit' name='Login' value='Login'>
                 </form> " . "
-                <form method='post'>
+                <form action='' method='post'>
                 <input type='submit' name='SignUp' value='SignUp'>
                 </form>";
     //echo $content;
@@ -33,7 +33,7 @@ if($_SESSION["userLoggedIn"] == true)
 if(isset($_POST["Login"]))
 {
     $sessionID = session_id();
-    echo session_id();
+    echo "</br>Session ID: " . session_id() . "</br>";
     $username = $_POST["loginUserName"];
     $password = $_POST["loginPassword"];
 
