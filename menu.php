@@ -24,15 +24,14 @@ if(isset($_GET["userLogOut"]))
     if ($connect->query($sql) === TRUE)
     {
         echo "Record deleted successfully";
+        $connect->close();
+        session_destroy();
+        $_SESSION = array();
+        include(index.php);
     }
     else
         {
     echo "Error deleting record: " . $connect->error;
     }
-
-        $connect->close();
-        session_destroy();
-        $_SESSION = array();
-        include(index.php);
 }
 ?>

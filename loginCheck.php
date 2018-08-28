@@ -22,6 +22,7 @@ if($_SESSION["userLoggedIn"] === true)
 else
     {
         $content=null;
+        //include("menu.php");
         include('login.php');
     }
 ?>

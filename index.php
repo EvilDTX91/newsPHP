@@ -1,4 +1,4 @@
-<?php include("Settings/config.php");?>
+<?php require("Settings/config.php");?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +22,7 @@
     include('page.php');
     ?>
     <div id="menuleft3" align="left">
-        Hello!
+        <?php echo "Hi " . $_SESSION["username"] . "! (" . $_SESSION["userLoggedIn"] . ")"; ?>
     </div>
 </div>
 
