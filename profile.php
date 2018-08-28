@@ -1,6 +1,6 @@
 <?php session_start();?>
 <?php
-if($_SESSION["userLoggedIn"]===true)
+if($_SESSION["userLoggedIn"])
 {
     $content = null;
     $content .= "Username: " . $_SESSION["username"] . " (ID: " . $_SESSION["id"] . ")

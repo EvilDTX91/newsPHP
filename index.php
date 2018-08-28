@@ -22,7 +22,7 @@
     include('page.php');
     ?>
     <div id="menuleft3" align="left">
-        <?php echo "Hi " . $_SESSION["username"] . "! (" . $_SESSION["userLoggedIn"] . ")"; ?>
+        <?php echo "Hi " . $_SESSION["username"] . "! (" . $_SESSION["userLoggedIn"] . ") INDEX"; ?>
     </div>
 </div>
 

@@ -1,5 +1,5 @@
 <?php
-if($_SESSION["userLoggedIn"] === true)
+if($_SESSION["userLoggedIn"])
 {
     $username = $_SESSION["username"];
     $sql = "Select username FROM sessions WHERE username='$username'";
