@@ -1,6 +1,6 @@
 <?php session_start();?>
 <?php
-if($_SESSION["userLoggedIn"])
+if(isset($USER))
 {
     $content = null;
     $content .= "Username: " . $_SESSION["username"] . " (ID: " . $_SESSION["id"] . ")
@@ -14,6 +14,7 @@ if($_SESSION["userLoggedIn"])
 else
 {
     echo "Kérem jelentkezzen be a tartalom eléréséhez.(Profil)</br>";
+    echo "Hi " . $_SESSION["username"] . "! (" . $_SESSION["userLoggedIn"] . ") PROFILE";
 }
-echo "<a href='index.php'> <button>Back!</button>";
+echo "<a href='index.php'><button>Back!</button>";
 ?>

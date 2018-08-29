@@ -2,7 +2,7 @@
 <?php
 if(isset($_GET["userSendNews"]))
 {
-    if($_SESSION["userLoggedIn"])
+    if($USER)
     {
         $content = null;
         $content .= "<form action='articleUploaderSend.php' method='post'>
