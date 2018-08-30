@@ -29,6 +29,7 @@ else
 */
 ?>
 <?php
+require('Settings/connect.php');
 if(isset($_POST["Login"]))
 {
     $sessionID = session_id();
@@ -49,12 +50,8 @@ if(isset($_POST["Login"]))
         $update = "UPDATE users SET lastlogin=now() WHERE username='$username' AND userpassword='$password' ";
         $connect->query($update);
 
-        $sessionDB = "INSERT INTO sessions(session,username,userPW)
-                      VALUES ('$sessionID','$username','$password')";
-        $connect->query($sessionDB);
-
-        $content = null;
-        $content = include ("menu.php");
+        //$content = null;
+        //include ("menu.php");
         //echo $content;
 
         if($result->num_rows > 0)
@@ -78,8 +75,12 @@ if(isset($_POST["Login"]))
                 $_SESSION["registered"] = $row["regist"];
                 $_SESSION["lastlogin"] = $row["lastlogin"];
                 $_SESSION["sessionID"] = session_id();
-                echo "Hi " . $_SESSION["username"] . "! (" . $_SESSION["userLoggedIn"] . ") LOGIN";
+                echo "Hi " . $_SESSION["username"] . "! LOGIN</br>";
             }
+
+            $sessionDB = "INSERT INTO sessions(session,username,userID,userPW)
+                      VALUES ('$sessionID','$username','" . $_SESSION["id"] . "','$password')";
+            $connect->query($sessionDB);
         }
         else
         {
@@ -93,12 +94,15 @@ if(isset($_POST["Login"]))
 }
 ?>
 <?php
-$USER = false;
-if(isset($_SESSION["sessionID"])) {
+$USER = null;
+//echo "Login check Starts here...";
+//echo $USER . " result?!";
+if(isset($_SESSION["password"])) {
     $username = $_SESSION["username"];
     $userpassword = $_SESSION["password"];
+    $session = $_SESSION["sessionID"];
 
-    $sql = "Select username FROM sessions WHERE username='$username' AND userpassword='userpassword'";
+    $sql = "Select * FROM sessions WHERE username='$username' AND userpassword='userpassword' AND session='$session'";
     $succes = $connect->query($sql);
 
     if(isset($succes))
@@ -106,7 +110,7 @@ if(isset($_SESSION["sessionID"])) {
         $USER = true;
         echo $USER . " Siker!";
     } else {
-        $USER = false;
+        $USER = null;
         echo $USER . " Nem Siker!";
     }
 }

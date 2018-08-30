@@ -1,5 +1,5 @@
 <?php
-include ("Settings/connect.php");
+//include ("Settings/connect.php");
 if(isset($_POST["userUploadNews"]))
 {
     $title= mysqli_real_escape_string($connect, $_POST['userWriteTitle']);

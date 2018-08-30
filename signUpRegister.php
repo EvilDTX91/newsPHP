@@ -22,6 +22,6 @@ if(isset($_POST["sendSignUp"]))
         echo "Error: " . $sql . "</br>" . $connect->error;
     }
 }
-echo "<a href = index.php><button>Back!</button>";
+echo "<a href = index.php><button>Back!</button></a>";
 $connect->close();
 ?>

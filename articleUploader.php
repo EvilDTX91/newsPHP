@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php //session_start();?>
 <?php
 if(isset($_GET["userSendNews"]))
 {
@@ -11,13 +11,13 @@ if(isset($_GET["userSendNews"]))
                 <input type='reset' name='reset' value='Cancel'>
                 <input type='submit' name='userUploadNews' value='Send'>
                 </form>
-                <a href = index.php> <button>Back!</button>";
+                <a href = index.php> <button>Back!</button></a>";
         echo $content;
     }
     else
     {
         echo "Kérem jelentkezzen be a tartalom eléréséhez.(Cikk feltöltése)</br>";
-        echo "<a href = index.php> <button>Back!</button>";
+        echo "<a href = index.php> <button>Back!</button></a>";
     }
     /*
     echo "<form action='articleUploaderSend.php' method='get'>";
@@ -29,8 +29,10 @@ if(isset($_GET["userSendNews"]))
     echo "<a href = index.php> <button>Back!</button>";
     */
 }
+/*
 else
 {
-    echo "<a href = index.php> <button>Back!</button>";
+    echo "<a href = index.php><button>Back!</button>";
 }
+*/
 ?>

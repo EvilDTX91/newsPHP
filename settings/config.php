@@ -6,7 +6,14 @@ $_SESSION = array();
 define('WWWROOT', 'http://localhost/phpHome/newsphp/');
 define('FILEROOT', 'D:/Programozas/xampp/htdocs/phpHome/newsphp/');
 
-require('settings/connect.php');
-require('logincheck.php');
+require(FILEROOT . 'settings/connect.php');
+
+require(FILEROOT . 'logincheck.php');
+require(FILEROOT . 'articleUploader.php');
+require(FILEROOT . 'articleUploaderSend.php');
+require(FILEROOT . 'profile.php');
 $content = null;
+$left = null;
+$right = null;
+$head = null;
 ?>

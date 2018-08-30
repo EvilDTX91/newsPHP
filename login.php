@@ -1,6 +1,7 @@
 <?php
 if(isset($USER))
 {
+    echo $USER . " Siker! LOGIN";
     include "menu.php";
 }
 else
@@ -10,7 +11,7 @@ else
     $content = "<form action='' method='post'>
                 Username:<input type='text' name='loginUserName'></br> 
                 Password: <input type='password' name='loginPassword'></br>
-                <input type='submit' name='Login' value='Login' formaction='loginCheck.php'>
+                <input type='submit' name='Login' value='Login'>
                 </form> " . "
                 <nobr><form action='signUp.php' method='post'>
                 <input type='submit' name='SignUp' value='SignUp'>
@@ -18,7 +19,7 @@ else
                 <nobr><form action='' method='post'>
                 <input type='submit' name='ForgetPassword' value='ForgetPassword'>
                 </form>";
-    //echo $content;
+    echo $content;
 }
 /*echo "<form action='login.php' method='get'>";
 echo "Username:<input type='text' name='loginUserName'></br>";

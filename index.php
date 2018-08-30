@@ -22,14 +22,17 @@
     include('page.php');
     ?>
     <div id="menuleft3" align="left">
-        <?php echo "Hi " . $_SESSION["username"] . "! (" . $_SESSION["userLoggedIn"] . ") INDEX"; ?>
+        <?php echo "Hi " . $_SESSION["username"] . "! INDEX"; ?>
     </div>
 </div>
 
 
 <div name="right" align="right">
     <form action="articleUploader.php" method="get">
-        <?php //include ("menu.php")?>
+        <?php //include ("menu.php")
+        $sessionID = session_id();
+        echo "</br>Session ID: " . session_id() . "</br>";
+        ?>
         <!--<input type="submit" name="userAdatlap" value="Adatlap">
         <input type="submit" name="userSendNews" value="Hír beküldése">
         <input type="submit" name="userLogOut" value="Kijelentkezés">-->
