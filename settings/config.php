@@ -1,6 +1,5 @@
 <?php
 session_start();
-$_SESSION = array();
 //$_SESSION["userLoggedIn"] = false;
 
 define('WWWROOT', 'http://localhost/phpHome/newsphp/');
