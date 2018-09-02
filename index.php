@@ -1,4 +1,4 @@
-<?php require("Settings/config.php");?>
+<?php require("Settings/config.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,19 +10,10 @@
 <div id="headLogo" align="center"><a href="index.php"><img src="pictures/logo1.jpg"></a></div>
 <div id="menuleft1" align="left">
     <?php
-    /*if($content == null)
-    {
-        include("login.php");
-        //echo $content;
-    }
-    else
-    {
-        echo $content;
-    }*/
     include('page.php');
     ?>
     <div id="menuleft3" align="left">
-        <?php echo "Hi " . $_SESSION["username"] . "! INDEX"; ?>
+        <?php //echo "Hi " . $_SESSION["username"] . "! INDEX"; ?>
     </div>
 </div>
 
@@ -40,7 +31,7 @@
 </div>
 
 <div name="mid" align="center">
-   <?php include ("news.php"); ?>
+    <?php include("news.php"); ?>
 </div>
 <div id="bottomCright" align="center">
     <footer>

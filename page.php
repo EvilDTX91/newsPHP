@@ -1,15 +1,12 @@
 <?php
-if(isset($USER))
-{
+if (isset($USER)) {
     echo $USER . " Siker! PAGE";
     $content = null;
-    include ("menu.php");
+    include("menu.php");
     echo "Hi " . $_SESSION["username"] . "! PAGE";
-}
-else
-    {
+} else {
     $content = null;
     include('login.php');
-    }
+}
 //echo $content;
 ?>

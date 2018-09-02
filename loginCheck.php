@@ -1,37 +1,6 @@
 <?php
-/*
-if($_SESSION["$USER"])
-{
-    $username = $_SESSION["username"];
-    $sql = "Select username FROM sessions WHERE username='$username'";
-    $result = $connect->query($sql);
-
-    if($result->num_rows > 0)
-    {
-        while($row = $result->fetch_assoc())
-        {
-            if($row == $username)
-            {
-                $content = null;
-                echo $row . "</br>";
-                include('menu.php');
-            }
-        }
-    }
-
-}
-else
-    {
-        $content=null;
-        //include("menu.php");
-        include('login.php');
-    }
-*/
-?>
-<?php
-require('Settings/connect.php');
-if(isset($_POST["Login"]))
-{
+if (isset($_POST["Login"])) {
+    require('Settings/connect.php');
     $sessionID = session_id();
     echo "</br>Session ID: " . session_id() . "</br>";
     $username = $_POST["loginUserName"];
@@ -39,9 +8,8 @@ if(isset($_POST["Login"]))
 
     if ($username != null && $password != null) {
 
-        foreach($_POST as $index => $elem)
-        {
-            $$index = htmlspecialchars($_POST[$index],ENT_QUOTES,'UTF-8');
+        foreach ($_POST as $index => $elem) {
+            $$index = htmlspecialchars($_POST[$index], ENT_QUOTES, 'UTF-8');
         }
 
         $sql = "SELECT * FROM users WHERE username = '$username' AND userpassword = '$password'";
@@ -54,17 +22,8 @@ if(isset($_POST["Login"]))
         //include ("menu.php");
         //echo $content;
 
-        if($result->num_rows > 0)
-        {
-            while($row = $result->fetch_assoc())
-            {
-                /*echo "</br>Username: " . $row["username"] . "(ID: " . $row["id"] . ")";
-                echo "</br>Name: " . $row["lastname"] . " " . $row["firstname"];
-                echo "</br>E-mail: " . $row["email"];
-                echo "</br>Born: " . $row["born"];
-                echo "</br>Registered: " . $row["regist"];
-                echo "</br>Last Here: " . $row["lastlogin"] . "</br>";*/
-
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
                 $_SESSION["username"] = $row["username"];
                 $_SESSION["password"] = $row["userpassword"];
                 $_SESSION["id"] = $row["id"];
@@ -81,23 +40,17 @@ if(isset($_POST["Login"]))
             $sessionDB = "INSERT INTO sessions(session,username,userID,userPW)
                       VALUES ('$sessionID','$username','" . $_SESSION["id"] . "','$password')";
             $connect->query($sessionDB);
-        }
-        else
-        {
+        } else {
             echo "Result 0!</br>";
         }
-    }
-    else
-    {
+    } else {
         echo "Missing username or password! </br>";
     }
 }
-?>
-<?php
 $USER = null;
 //echo "Login check Starts here...";
 //echo $USER . " result?!";
-if(isset($_SESSION["password"])) {
+if (isset($_SESSION["password"])) {
     $username = $_SESSION["username"];
     $userpassword = $_SESSION["password"];
     $session = $_SESSION["sessionID"];
@@ -105,8 +58,7 @@ if(isset($_SESSION["password"])) {
     $sql = "Select * FROM sessions WHERE username='$username' AND userpassword='userpassword' AND session='$session'";
     $succes = $connect->query($sql);
 
-    if(isset($succes))
-    {
+    if (isset($succes)) {
         $USER = true;
         echo $USER . " Siker!";
     } else {
@@ -114,4 +66,3 @@ if(isset($_SESSION["password"])) {
         echo $USER . " Nem Siker!";
     }
 }
-?>
