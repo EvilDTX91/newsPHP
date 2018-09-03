@@ -4,6 +4,8 @@ session_start();
 define('WWWROOT', 'http://localhost/phpHome/newsphp/');
 define('FILEROOT', 'D:/Programozas/xampp/htdocs/phpHome/newsphp/');
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 require(FILEROOT . 'settings/connect.php');
 
 require(FILEROOT . 'logincheck.php');

@@ -1,12 +1,12 @@
 {% block head %}
-    {% include 'head.twig' %}
-    {% include 'header.twig' %}
+    {% include 'partial/head.twig' %}
+    {% include 'partial/header.twig' %}
 {% endblock %}
 
-{% block body %}
-    {% include 'content.twig' %}
+{% block content %}
+    {% include 'partial/content.twig' %}
 {% endblock %}
 
 {% block footer %}
-    {% include 'footer.twig' %}
+    {% include 'partial/footer.twig' %}
 {% endblock %}
