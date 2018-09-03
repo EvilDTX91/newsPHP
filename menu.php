@@ -1,6 +1,5 @@
 <?php
-if(isset($USER))
-{
+if (isset($USER)) {
     $content = null;
     $content = "<form action='' method='get'>
             <input type='submit' name='userProfile' value='Profil'></br>
@@ -9,30 +8,18 @@ if(isset($USER))
             </form>";
     echo $content;
 }
-/*echo "<form method='get'>";
-echo "<input type='submit' name='userAdatlap' value='Adatlap'>";
-echo "<input type='submit' name='userSendNews' value='Hír beküldése'>";
-echo "<input type='submit' name='userLogOut' value='Kijelentkezés'>";
-echo "</form>";*/
-?>
-<?php
-if(isset($_GET["userLogOut"]))
-{
+if (isset($_GET["userLogOut"])) {
     include('Settings/connect.php');
-    $username=$_SESSION["username"];
-    echo "Viszlát " . $_SESSION["firstname"] . "!</br>";
+    $username = $_SESSION["username"];
+    echo "Viszlát " . $_SESSION["firstname"] . "! </br>";
     $USER = null;
 
     $sql = "DELETE FROM sessions WHERE username='$username'";
-    if ($connect->query($sql))
-    {
-        echo "Record deleted successfully";
+    if ($connect->query($sql)) {
+        echo "</br>Record deleted successfully!</br></br></br>";
         $connect->close();
         session_destroy();
-    }
-    else
-        {
-    echo "Error deleting record: " . $connect->error;
+    } else {
+        echo "Error deleting record: " . $connect->error;
     }
 }
-?>
