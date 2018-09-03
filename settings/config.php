@@ -14,4 +14,3 @@ $content = null;
 $left = null;
 $right = null;
 $head = null;
-?>

@@ -11,12 +11,12 @@ if (isset($USER)) {
 if (isset($_GET["userLogOut"])) {
     include('Settings/connect.php');
     $username = $_SESSION["username"];
-    echo "Viszlát " . $_SESSION["firstname"] . "!</br>";
+    echo "Viszlát " . $_SESSION["firstname"] . "! </br>";
     $USER = null;
 
     $sql = "DELETE FROM sessions WHERE username='$username'";
     if ($connect->query($sql)) {
-        echo "Record deleted successfully";
+        echo "</br>Record deleted successfully!</br></br></br>";
         $connect->close();
         session_destroy();
     } else {

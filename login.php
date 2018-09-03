@@ -1,6 +1,5 @@
 <?php
 if (isset($USER)) {
-    echo $USER . " Siker! LOGIN";
     include "menu.php";
 } else {
     //echo $content . " working?! LOGIN";

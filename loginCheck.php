@@ -60,9 +60,7 @@ if (isset($_SESSION["password"])) {
 
     if (isset($succes)) {
         $USER = true;
-        echo $USER . " Siker!";
     } else {
         $USER = null;
-        echo $USER . " Nem Siker!";
     }
 }
