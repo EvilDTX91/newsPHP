@@ -16,4 +16,3 @@ if (isset($_POST["SignUp"])) {
     echo $content;
 }
 echo "<a href = index.php><button>Back!</button>";
-?>
