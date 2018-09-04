@@ -1,22 +1,23 @@
-<div id="menuleft1" align="left">
-    <?php
-    include('page.php');
-    ?>
-    <div id="menuleft3" align="left">
-        <?php //echo "Hi " . $_SESSION["username"] . "! INDEX"; ?>
+{% block content %}
+    <body>
+    <div id="menuleft1" align="left">
+        {% block content %}{% include '\..\page.php' %}{% endblock %}
+        <div id="menuleft2" align="left">
+            {% block %} Hi! session.username! {% endblock %}
+        </div>
     </div>
-</div>
-<div name="right" align="right">
-    <form action="articleUploader.php" method="get">
-        <?php //include ("menu.php")
-        $sessionID = session_id();
-        echo "</br>Session ID: " . session_id() . "</br>";
-        ?>
-        <!--<input type="submit" name="userAdatlap" value="Adatlap">
-        <input type="submit" name="userSendNews" value="Hír beküldése">
-        <input type="submit" name="userLogOut" value="Kijelentkezés">-->
-    </form>
-</div>
-<div name="mid" align="center">
-    <?php include("news.php"); ?>
-</div>
+    <div name="right" align="right">
+        <form action="articleUploader.php" method="get">
+            {% block %}
+                Session ID: session_id();
+            {% endblock %}
+            <!--<input type="submit" name="userAdatlap" value="Adatlap">
+            <input type="submit" name="userSendNews" value="Hír beküldése">
+            <input type="submit" name="userLogOut" value="Kijelentkezés">-->
+        </form>
+    </div>
+    <div name="mid" align="center">
+        <?php include("news.php"); ?>
+    </div>
+    </body>
+{% endblock %}

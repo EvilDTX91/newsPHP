@@ -1,4 +1,21 @@
 {% extends 'base.twig' %}
 {% block content %}
+    <body>
+    Hello Világ!
     {{ session.username }}
+    ASD!
+
+    {% block logModule %}
+        {% include '../page.php' %}
+    {% endblock %}
+
+    <div id="menuleft2" align="left">
+        Hi
+        {% block newsmodule %}
+            {{ session.username }}
+        {% endblock %}
+        !
+    </div>
+
+    </body>
 {% endblock %}

@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block content %}
-    {% include 'partial/content.twig' %}
+    <div id='logM'>{% block logModule %}{% endblock %}</div>
+    <div id='newsM'></div>
 {% endblock %}
 
 {% block footer %}
