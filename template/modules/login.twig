@@ -1,0 +1,16 @@
+{% block %}
+    {% if post.loginStart %}
+        {{app.request.post('loginStart')}
+    {% block logModule %}
+        <div>
+            <form>
+                Username: <input type="text" name="loginUserName">
+                Password: <input type="password" name="loginPassword">
+                <input type="submit" name="Login" value="Login">
+                <input type="submit" name="SignUp" value="SignUp">
+                <input type="submit" name="ForgetPassword" value="ForgetPassword">
+            </form>
+        </div>
+    {% endblock %}
+    {%  endif %}
+{% endblock %}

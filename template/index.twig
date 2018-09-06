@@ -1,18 +1,18 @@
 {% extends 'base.twig' %}
 {% block content %}
     <body>
-    Hello Világ!
-    {{ session.username }}
-    ASD!
+    Hello Világ!(
+    {{ session.username }} )!
 
     {% block logModule %}
-        {% include '../page.php' %}
+        <form action="" method="post">
+            <input type="submit" name="loginStart" value="Login">
+        </form>
     {% endblock %}
 
     <div id="menuleft2" align="left">
-        Hi
         {% block newsmodule %}
-            {{ session.username }}
+            (+ {{ session.username }} +)
         {% endblock %}
         !
     </div>

@@ -6,7 +6,7 @@ define('FILEROOT', 'D:/Programozas/xampp/htdocs/phpHome/newsphp/');
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-require(FILEROOT . 'settings/connect.php');
+require(FILEROOT . 'Settings/connect.php');
 
 require(FILEROOT . 'logincheck.php');
 require(FILEROOT . 'articleUploader.php');
