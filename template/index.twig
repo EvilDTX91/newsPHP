@@ -5,9 +5,18 @@
     {{ session.username }} )!
 
     {% block logModule %}
+        {% include 'modules/login.twig' %}
         <form action="" method="post">
             <input type="submit" name="loginStart" value="Login">
         </form>
+    {% endblock %}
+
+    {% block menuModule %}
+        {% include 'modules/menu.twig' %}
+    {% endblock %}
+
+    {% block profileModule %}
+        {% include 'modules/profile.twig' %}
     {% endblock %}
 
     <div id="menuleft2" align="left">

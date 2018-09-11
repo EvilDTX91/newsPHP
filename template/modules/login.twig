@@ -1,7 +1,4 @@
-{% block %}
-    {% if post.loginStart %}
-        {{app.request.post('loginStart')}
-    {% block logModule %}
+{% block logModule %}
         <div>
             <form>
                 Username: <input type="text" name="loginUserName">
@@ -11,6 +8,4 @@
                 <input type="submit" name="ForgetPassword" value="ForgetPassword">
             </form>
         </div>
-    {% endblock %}
-    {%  endif %}
 {% endblock %}
