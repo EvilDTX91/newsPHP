@@ -1,6 +1,6 @@
 <?php
 
-namespace NewsPHP\Database;
+namespace NewsPHP\classes\Database;
 
 use mysqli;
 
@@ -43,8 +43,8 @@ class Connect
     function getConnection(): msqli
     {
         $connection = new mysqli(self::$HOST, self::$DBUSER, self::$DBPASSWORD, self::$DATABASE);
-        $this->connectionWasSuccesFull($connection);
-        $this->setDBCharSet($connection);
+        //$this->connectionWasSuccesFull($connection);
+        //$this->setDBCharSet($connection);
         return $connection;
     }
 
