@@ -35,7 +35,7 @@ class Connect
             $this->DATABASE = 'newsphp';
         }
 
-        return $this->getConnection();
+        $this->getConnection();
         //return ($this->HOST) . ($this->DBUSER) . ($this->DBPASSWORD) . ($this->DATABASE);
     }
 
@@ -45,6 +45,8 @@ class Connect
         $connection = new mysqli(self::$HOST, self::$DBUSER, self::$DBPASSWORD, self::$DATABASE);
         //$this->connectionWasSuccesFull($connection);
         //$this->setDBCharSet($connection);
+        $this->setDBCharSet($connection);
+        $this->connectionWasSuccesFull();
         return $connection;
     }
 
