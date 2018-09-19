@@ -8,8 +8,9 @@
 
 namespace newsphp\classes;
 
+use NewsPHP\classes\Database\Connect;
 
-class signUpRegister extends connect
+class SignUpRegister extends Connect
 {
     private $USERNAME;
     private $PASSWORD;
@@ -47,7 +48,7 @@ class signUpRegister extends connect
     {
         $sql = "INSERT INTO users (username,userpassword,email,firstname,lastname,born) VALUES
 ($this->USERNAME,$this->PASSWORD,$this->EMAIL,$this->FIRSTNAME,$this->LASTNAME,$this->BORN)";
-        connect . getConnection()->query($sql);
+        Connect::getConnection()->msqli($sql);
     }
 
 }

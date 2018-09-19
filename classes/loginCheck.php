@@ -2,9 +2,9 @@
 
 namespace newsphp\classes;
 
-use mysqli;
+use NewsPHP\classes\Database\Connect;
 
-class loginCheck extends connect
+class LoginCheck extends Connect
 {
     private $USERNAME;
     private $PASSWORD;
@@ -31,7 +31,7 @@ class loginCheck extends connect
     {
         if (isset($this->USERNAME) && isset($this->PASSWORD)) {
             $sql = "SELECT * FROM users WHERE username = '$this->USERNAME' AND userpassword = '$this->PASSWORD'";
-            $result = connect . getConnection()->query($sql);
+            $result = Connect::getConnection()->msqli($sql);
             return $result;
         }
 
@@ -42,7 +42,7 @@ class loginCheck extends connect
     {
         if (isset($this->USERNAME) && isset($this->PASSWORD)) {
             $sql = "UPDATE users SET lastlogin=now() WHERE username='$this->USERNAME' AND userpassword='$this->PASSWORD'";
-            connect . getConnection()->query($sql);
+            Connect::getConnection()->msqli($sql);
         }
     }
 
@@ -73,7 +73,7 @@ class loginCheck extends connect
     {
         $sql = "INSERT INTO sessions(session,username,userID,userPW)
 VALUES (" . $_SESSION['sessionID'] . "," . $_SESSION['username'] . "," . $_SESSION['id'] . "," . $_SESSION['password'] . ")";
-        connect . getConnection()->query($sql);
+        Connect::getConnection()->msqli($sql);
     }
 
     private
@@ -82,7 +82,7 @@ VALUES (" . $_SESSION['sessionID'] . "," . $_SESSION['username'] . "," . $_SESSI
         if (isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
             $sql = "DELETE FROM sessions WHERE username='$username'";
-            connect . getConnection()->query($sql);
+            Connect::getConnection()->msqli($sql);
             session_destroy();
         }
     }

@@ -12,7 +12,7 @@ class Connect
     private $DATABASE;
 
     protected
-    function setConnection($host, $dbuser, $dbpassword, $database)
+    function setConnectionData($host, $dbuser, $dbpassword, $database)
     {
         if (isset($host)) {
             $this->HOST = $host;
@@ -38,9 +38,13 @@ class Connect
         $this->getConnection();
         //return ($this->HOST) . ($this->DBUSER) . ($this->DBPASSWORD) . ($this->DATABASE);
     }
+    public function getConnection()
+    {
+        return $this->setConnection();
+    }
 
     private
-    function getConnection(): msqli
+    function setConnection(): msqli
     {
         $connection = new mysqli(self::$HOST, self::$DBUSER, self::$DBPASSWORD, self::$DATABASE);
         //$this->connectionWasSuccesFull($connection);
