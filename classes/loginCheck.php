@@ -4,7 +4,7 @@ namespace newsphp\classes;
 
 use NewsPHP\classes\Database\Connect;
 
-class LoginCheck extends Connect
+class LoginCheck
 {
     private $USERNAME;
     private $PASSWORD;
@@ -15,6 +15,7 @@ class LoginCheck extends Connect
         $this->USERNAME = $username;
         $this->PASSWORD = $password;
         $this->logIn();
+        echo "SIKER!";
     }
 
     private

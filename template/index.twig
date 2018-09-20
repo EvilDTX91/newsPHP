@@ -19,6 +19,18 @@
         {% include 'modules/profile.twig' %}
     {% endblock %}
 
+    {% block articlesModule %}
+        {% include 'modules/articles.twig' %}
+    {% endblock %}
+
+    {% block articlesUpModule %}
+        {% include 'modules/articleUploader.twig' %}
+    {% endblock %}
+
+    {% block signUpModule %}
+        {% include 'modules/signUp.twig' %}
+    {% endblock %}
+
     <div id="menuleft2" align="left">
         {% block newsmodule %}
             (+ {{ session.username }} +)
