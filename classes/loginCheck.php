@@ -12,14 +12,15 @@ class LoginCheck
     public
     function setLogInCheck($username, $password)
     {
-        $this->USERNAME = $username;
-        $this->PASSWORD = $password;
-        $this->logIn();
-        echo "SIKER!";
+        $start = new LoginCheck;
+        $start->USERNAME = $username;
+        $start->PASSWORD = $password;
+        //$start->logIn();
+        echo "</br>SIKER!";
     }
 
     private
-    function login()
+    function logIn()
     {
         $result = $this->checkUser();
         if (isset($result)) {
