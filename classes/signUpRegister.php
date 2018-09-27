@@ -48,7 +48,7 @@ class SignUpRegister extends Connect
     {
         $sql = "INSERT INTO users (username,userpassword,email,firstname,lastname,born) VALUES
 ($this->USERNAME,$this->PASSWORD,$this->EMAIL,$this->FIRSTNAME,$this->LASTNAME,$this->BORN)";
-        Connect::getConnection()->msqli($sql);
+        Connect::getConnection()->mysqli($sql);
     }
 
 }

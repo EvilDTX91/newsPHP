@@ -9,14 +9,14 @@ class ArticleLoader extends Connect
     private function loadAllArticle()
     {
         $sql = "SELECT * FROM articles";
-        $result = Connect::getConnection()->msqli($sql);
+        $result = Connect::getConnection()->mysqli($sql);
         return $result;
     }
 
     private function loadSelectedArticle($selectedAuthor)
     {
         $sql = "SELECT * FROM articles WHERE authorID='$selectedAuthor'";
-        $result = Connect::getConnection()->msqli($sql);
+        $result = Connect::getConnection()->mysqli($sql);
         return $result;
     }
 

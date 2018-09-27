@@ -1,6 +1,6 @@
 <?php
 
-namespace NewsPHP\classes\Database;
+namespace newsphp\classes\Database;
 
 use mysqli;
 
@@ -11,7 +11,7 @@ class Connect
     private $DBPASSWORD;
     private $DATABASE;
 
-    protected
+    private
     function setConnectionData($host, $dbuser, $dbpassword, $database)
     {
         if (isset($host)) {
@@ -35,29 +35,31 @@ class Connect
             $this->DATABASE = 'newsphp';
         }
 
-        $this->getConnection();
+        //$this->getConnection();
         //return ($this->HOST) . ($this->DBUSER) . ($this->DBPASSWORD) . ($this->DATABASE);
     }
+
     public function getConnection()
     {
-        return $this->setConnection();
+        self::setConnectionData('localhost', 'root', '', 'newsphp');
+        return self::setConnection();
     }
 
     private
-    function setConnection(): msqli
+    function setConnection()
     {
-        $connection = new mysqli(self::$HOST, self::$DBUSER, self::$DBPASSWORD, self::$DATABASE);
+        $connection = new mysqli($this->HOST,$this->DBUSER,$this->DBPASSWORD,$this->DATABASE);
         //$this->connectionWasSuccesFull($connection);
         //$this->setDBCharSet($connection);
-        $this->setDBCharSet($connection);
-        $this->connectionWasSuccesFull();
+        self::setDBCharSet($connection);
+        self::connectionWasSuccesFull($connection);
         return $connection;
     }
 
     private
     function setDBCharSet($connection)
     {
-        $connection->mysqli_set_charset($connection, "utf-8");
+        mysqli_set_charset($connection, "utf-8");
     }
 
     private

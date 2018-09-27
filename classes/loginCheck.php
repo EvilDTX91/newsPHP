@@ -4,28 +4,28 @@ namespace newsphp\classes;
 
 use NewsPHP\classes\Database\Connect;
 
-class LoginCheck
+class LoginCheck extends Connect
 {
-    private $USERNAME;
-    private $PASSWORD;
+    private $USERNAME = "";
+    private $PASSWORD = "";
 
     public
     function setLogInCheck($username, $password)
     {
-        $start = new LoginCheck;
-        $start->USERNAME = $username;
-        $start->PASSWORD = $password;
-        //$start->logIn();
+        $this->USERNAME = $username;
+        $this->PASSWORD = $password;
+        self::logIn();
         echo "</br>SIKER!";
     }
 
     private
     function logIn()
     {
-        $result = $this->checkUser();
+        echo "</br>LOGIN!";
+        $result = self::checkUser();
         if (isset($result)) {
-            $this->updateLastLogin();
-            $this->setProfile();
+            self::updateLastLogin();
+            self::setProfile();
         }
     }
 
@@ -33,7 +33,7 @@ class LoginCheck
     {
         if (isset($this->USERNAME) && isset($this->PASSWORD)) {
             $sql = "SELECT * FROM users WHERE username = '$this->USERNAME' AND userpassword = '$this->PASSWORD'";
-            $result = Connect::getConnection()->msqli($sql);
+            $result = Connect::getConnection()->query($sql);
             return $result;
         }
 
@@ -44,14 +44,14 @@ class LoginCheck
     {
         if (isset($this->USERNAME) && isset($this->PASSWORD)) {
             $sql = "UPDATE users SET lastlogin=now() WHERE username='$this->USERNAME' AND userpassword='$this->PASSWORD'";
-            Connect::getConnection()->msqli($sql);
+            Connect::getConnection()->query($sql);
         }
     }
 
     private
     function setProfile()
     {
-        $result = $this->checkUser();
+        $result = self::checkUser();
         if (isset($result)) {
             while ($row = $result->fetch_assoc()) {
                 $_SESSION['username'] = $row['username'];
@@ -66,7 +66,7 @@ class LoginCheck
                 $_SESSION['sessionID'] = session_id();
                 $_SESSION['loggedIn'] = true;
             }
-            $this->createSessionDB();
+            self::createSessionDB();
         }
     }
 
@@ -75,7 +75,7 @@ class LoginCheck
     {
         $sql = "INSERT INTO sessions(session,username,userID,userPW)
 VALUES (" . $_SESSION['sessionID'] . "," . $_SESSION['username'] . "," . $_SESSION['id'] . "," . $_SESSION['password'] . ")";
-        Connect::getConnection()->msqli($sql);
+        Connect::getConnection()->query($sql);
     }
 
     private
@@ -84,7 +84,7 @@ VALUES (" . $_SESSION['sessionID'] . "," . $_SESSION['username'] . "," . $_SESSI
         if (isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
             $sql = "DELETE FROM sessions WHERE username='$username'";
-            Connect::getConnection()->msqli($sql);
+            Connect::getConnection()->mysqli($sql);
             session_destroy();
         }
     }

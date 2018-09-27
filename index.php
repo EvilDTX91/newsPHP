@@ -1,9 +1,9 @@
 <?php require("Settings/config.php");
-include ('classes/database/connect.php');
-include ('classes/articleLoader.php');
-include ('classes/articleUploader.php');
-include ('classes/loginCheck.php');
-include ('classes/signUpRegister.php');
+include('classes/database/connect.php');
+include('classes/articleLoader.php');
+include('classes/articleUploader.php');
+include('classes/loginCheck.php');
+include('classes/signUpRegister.php');
 
 $twig = new Twig_Environment(new Twig_Loader_Filesystem('template/'));
 
@@ -32,10 +32,10 @@ $twig->display('index.twig',
         'menuElements' => $menuElements
     ]);
 
-if (isset($_POST["Login"]))
-{
+if (isset($_POST["Login"])) {
     //$username = $_POST['loginUserName'];
     //$userpassword = $_POST['loginPassword'];
     echo "asd";
-    \newsphp\classes\LoginCheck::setLogInCheck($_POST['loginUserName'],$_POST['loginPassword']);
+    $obj = new \newsphp\classes\LoginCheck();
+    $obj ->setLogInCheck($_POST['loginUserName'], $_POST['loginPassword']);
 }
