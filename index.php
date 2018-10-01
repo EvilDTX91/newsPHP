@@ -35,7 +35,20 @@ $twig->display('index.twig',
 if (isset($_POST["Login"])) {
     //$username = $_POST['loginUserName'];
     //$userpassword = $_POST['loginPassword'];
-    echo "asd";
+    echo "login";
     $obj = new \newsphp\classes\LoginCheck();
-    $obj ->setLogInCheck($_POST['loginUserName'], $_POST['loginPassword']);
+    $obj->setLogInCheck($_POST['loginUserName'], $_POST['loginPassword']);
+}
+
+if (isset($_POST["userLogOut"])) {
+    echo "logout";
+    $obj = new \newsphp\classes\LoginCheck();
+    $obj->logOut();
+}
+
+if(isset($_POST["userUploadNews"]))
+{
+    echo "uploadNews";
+    $obj = new \newsphp\classes\ArticleUploader();
+    $obj->setArticleData($_SESSION['id'],$_POST['userWriteNews'],$_POST['userWriteTitle']);
 }

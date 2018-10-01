@@ -4,7 +4,7 @@ namespace newsphp\classes;
 
 use NewsPHP\classes\Database\Connect;
 
-class ArticleUploader
+class ArticleUploader extends Connect
 {
     private $AUTHORID;
     private $ARTICLE;
@@ -13,7 +13,7 @@ class ArticleUploader
     public function setArticleData($authorID, $article, $title)
     {
         if (isset($authorID)) {
-            $this->AUTHORID = mysqli_real_escape_string(Connect::getConncetion(),$authorID);
+            $this->AUTHORID = mysqli_real_escape_string(Connect::getConnection(),$authorID);
         }
         if (isset($article)) {
             $this->ARTICLE = mysqli_real_escape_string(Connect::getConncetion(),$article);
@@ -22,13 +22,13 @@ class ArticleUploader
             $this->TITLE = mysqli_real_escape_string(Connect::getConncetion(),$title);
         }
 
-        $this->uploadArticle();
+        self::uploadArticle();
     }
 
     private function uploadArticle()
     {
         $sql = "INSERT INTO articles(authorID, article, title)
 VALUES ('$this->AUTHORID','$this->ARTICLE','$this->TITLE')";
-        $result = Connect::getConncetion()->mysqli($sql);
+        Connect::getConncetion()->query($sql);
     }
 }

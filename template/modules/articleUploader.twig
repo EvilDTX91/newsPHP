@@ -1,8 +1,8 @@
 {% block articlesUpModule %}
-    <form>
+    <form method="post">
         Title: <input type="text" name="userWriteTitle"></br>
         Article: <input type="text" name="userWriteNews"></br>
-        <input type="reset" name="resetUploadNews" value="Cancel">
         <input type="submit" name="userUploadNews" value="SendIn">
+        <input type="reset" name="resetUploadNews" value="Cancel">
     </form>
 {% endblock %}

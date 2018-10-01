@@ -15,17 +15,16 @@ class LoginCheck extends Connect
         $this->USERNAME = $username;
         $this->PASSWORD = $password;
         self::logIn();
-        echo "</br>SIKER!";
     }
 
     private
     function logIn()
     {
-        echo "</br>LOGIN!";
         $result = self::checkUser();
         if (isset($result)) {
             self::updateLastLogin();
             self::setProfile();
+            self::createSessionDB();
         }
     }
 
@@ -66,7 +65,6 @@ class LoginCheck extends Connect
                 $_SESSION['sessionID'] = session_id();
                 $_SESSION['loggedIn'] = true;
             }
-            self::createSessionDB();
         }
     }
 
@@ -78,13 +76,14 @@ VALUES (" . $_SESSION['sessionID'] . "," . $_SESSION['username'] . "," . $_SESSI
         Connect::getConnection()->query($sql);
     }
 
-    private
+    public
     function logOut()
     {
         if (isset($_SESSION['username'])) {
+            echo "LOGOUT " . $_SESSION['username'] . "</br>";
             $username = $_SESSION['username'];
             $sql = "DELETE FROM sessions WHERE username='$username'";
-            Connect::getConnection()->mysqli($sql);
+            Connect::getConnection()->query($sql);
             session_destroy();
         }
     }
