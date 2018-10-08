@@ -12,12 +12,12 @@ use NewsPHP\classes\Database\Connect;
 
 class SignUpRegister extends Connect
 {
-    private $USERNAME;
-    private $PASSWORD;
-    private $EMAIL;
-    private $FIRSTNAME;
-    private $LASTNAME;
-    private $BORN;
+    private $USERNAME = "";
+    private $PASSWORD = "";
+    private $EMAIL = "";
+    private $FIRSTNAME = "";
+    private $LASTNAME = "";
+    private $BORN = "";
 
     public function setUserValues($username, $password, $email, $firstname, $lastname, $born)
     {
@@ -40,7 +40,7 @@ class SignUpRegister extends Connect
             $this->BORN = $born;
         }
 
-        $this->registNewUser();
+        self::registNewUser();
 
     }
 
@@ -48,7 +48,7 @@ class SignUpRegister extends Connect
     {
         $sql = "INSERT INTO users (username,userpassword,email,firstname,lastname,born) VALUES
 ($this->USERNAME,$this->PASSWORD,$this->EMAIL,$this->FIRSTNAME,$this->LASTNAME,$this->BORN)";
-        Connect::getConnection()->mysqli($sql);
+        Connect::getConnection()->query($sql);
     }
 
 }

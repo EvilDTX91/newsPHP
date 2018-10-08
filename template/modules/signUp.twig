@@ -1,5 +1,5 @@
 {% block signUpModule %}
-<form>
+    <form method="POST">
         Firstname: <input type="text" name="signUpFirstName"> </br>
         Lastname: <input type="text" name="signUpLastName"> </br>
         Username: <input type="text" name="signUpUserName"> </br>
@@ -11,5 +11,5 @@
         <input type="text" name="signUpBornDay" size="1" maxlength="2"></br>
         <input type="submit" name="sendSignUp" value="Register">
         <input type="reset" name="resetSignUp" value="Reset">
-</form>
+    </form>
 {% endblock %}

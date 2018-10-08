@@ -6,20 +6,26 @@ use NewsPHP\classes\Database\Connect;
 
 class ArticleUploader extends Connect
 {
-    private $AUTHORID;
-    private $ARTICLE;
-    private $TITLE;
+    private $AUTHORID = "";
+    private $ARTICLE = "";
+    private $TITLE = "";
 
     public function setArticleData($authorID, $article, $title)
     {
         if (isset($authorID)) {
-            $this->AUTHORID = mysqli_real_escape_string(Connect::getConnection(),$authorID);
+            $this->AUTHORID = $authorID;
+        } else {
+            echo "(" . $authorID . ") is missing...";
         }
         if (isset($article)) {
-            $this->ARTICLE = mysqli_real_escape_string(Connect::getConncetion(),$article);
+            $this->ARTICLE = $article;
+        } else {
+            echo "(" . $article . ") is missing...";
         }
         if (isset($title)) {
-            $this->TITLE = mysqli_real_escape_string(Connect::getConncetion(),$title);
+            $this->TITLE = $title;
+        } else {
+            echo "(" . $title . ") is missing...";
         }
 
         self::uploadArticle();
@@ -29,6 +35,6 @@ class ArticleUploader extends Connect
     {
         $sql = "INSERT INTO articles(authorID, article, title)
 VALUES ('$this->AUTHORID','$this->ARTICLE','$this->TITLE')";
-        Connect::getConncetion()->query($sql);
+        Connect::getConnection()->query($sql);
     }
 }

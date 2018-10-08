@@ -48,7 +48,16 @@ if (isset($_POST["userLogOut"])) {
 
 if(isset($_POST["userUploadNews"]))
 {
-    echo "uploadNews";
+    echo "uploadNews</br>";
     $obj = new \newsphp\classes\ArticleUploader();
     $obj->setArticleData($_SESSION['id'],$_POST['userWriteNews'],$_POST['userWriteTitle']);
+}
+
+if(isset($_POST["sendSignUp"]))
+{
+    echo "register<br>";
+    $bornDate = $_POST['signUpBornYear'] . $_POST['signUpBornMonth'] . $_POST['signUpBornDay'];
+    $obj = new \newsphp\classes\SignUpRegister();
+    $obj->setUserValues($_POST['signUpUserName'],$_POST['signUpPassword'],$_POST['signUpEmail'],
+        $_POST['signUpFirstName'],$_POST['signUpLastName'],$bornDate);
 }

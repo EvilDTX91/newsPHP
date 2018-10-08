@@ -59,7 +59,7 @@ class Connect
     private
     function setDBCharSet($connection)
     {
-        mysqli_set_charset($connection, "utf-8");
+        mysqli_set_charset($connection, "utf8");
     }
 
     private
