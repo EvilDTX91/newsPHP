@@ -72,7 +72,7 @@ class LoginCheck extends Connect
     function createSessionDB()
     {
         $sql = "INSERT INTO sessions(session,username,userID,userPW)
-VALUES (" . $_SESSION['sessionID'] . "," . $_SESSION['username'] . "," . $_SESSION['id'] . "," . $_SESSION['password'] . ")";
+VALUES ('" . $_SESSION['sessionID'] . "','" . $_SESSION['username'] . "','" . $_SESSION['id'] . "','" . $_SESSION['password'] . "')";
         Connect::getConnection()->query($sql);
     }
 

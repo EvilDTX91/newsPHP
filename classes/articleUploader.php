@@ -34,7 +34,7 @@ class ArticleUploader extends Connect
     private function uploadArticle()
     {
         $sql = "INSERT INTO articles(authorID, article, title)
-VALUES ('$this->AUTHORID','$this->ARTICLE','$this->TITLE')";
+VALUES ('" . $this->AUTHORID . "','" . $this->ARTICLE . "','" . $this->TITLE . "')";
         Connect::getConnection()->query($sql);
     }
 }

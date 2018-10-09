@@ -47,7 +47,7 @@ class SignUpRegister extends Connect
     private function registNewUser()
     {
         $sql = "INSERT INTO users (username,userpassword,email,firstname,lastname,born) VALUES
-($this->USERNAME,$this->PASSWORD,$this->EMAIL,$this->FIRSTNAME,$this->LASTNAME,$this->BORN)";
+('" . $this->USERNAME . "','" . $this->PASSWORD . "','" . $this->EMAIL . "','" . $this->FIRSTNAME . "','" . $this->LASTNAME . "','" . $this->BORN . "')";
         Connect::getConnection()->query($sql);
     }
 
