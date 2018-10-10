@@ -7,9 +7,9 @@
         Everything will be automatically escaped in this block (using the HTML strategy)
     {% endautoescape %}
 
-    {%  for menuElement in menuElements %}
+    {% for menuElement in menuElements %}
         {% include 'partial/menuElement.twig' with { menu : menuElement } %}
-    {%  endfor %}
+    {% endfor %}
 
     {% if session.loggedIn==false %}
         {% block logModule %}
@@ -34,7 +34,7 @@
 
     {% if session.loggedIn==true %}
         {% block articlesModule %}
-            {% include 'modules/articles.twig' %}
+                {% include 'modules/articles.twig' %}
         {% endblock %}
     {% endif %}
 

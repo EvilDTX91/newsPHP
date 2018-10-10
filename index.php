@@ -26,10 +26,15 @@ $menuElements = [
     ]
 ];
 
+
+$articles = new newsphp\classes\ArticleLoader();
+$articles->loadAllArticle();
+
 $twig->display('index.twig',
     [
         'session' => $_SESSION,
-        'menuElements' => $menuElements
+        'menuElements' => $menuElements,
+        'articles' => $articles
     ]);
 
 if (isset($_POST['Login'])) {
