@@ -26,15 +26,39 @@ $menuElements = [
     ]
 ];
 
+$test = [
+    [
+        'x' => 'x1',
+        'y' => 'y1',
+        'z' => 'z1'
+    ],
+    [
+        'x' => 'x2',
+        'y' => 'y2',
+        'z' => 'z2'
+    ],
+    [
+        'x' => 'x3',
+        'y' => 'y3',
+        'z' => 'z3'
+    ]
+];
+
 
 $articles = new newsphp\classes\ArticleLoader();
-$articles->loadAllArticle();
+$result = $articles->loadAllArticle();
+/*
+foreach ($result as $value) {
+    print_r($value);
+    echo "</br>";
+}*/
 
 $twig->display('index.twig',
     [
         'session' => $_SESSION,
         'menuElements' => $menuElements,
-        'articles' => $articles
+        'articles' => $result,
+        'test' => $test
     ]);
 
 if (isset($_POST['Login'])) {

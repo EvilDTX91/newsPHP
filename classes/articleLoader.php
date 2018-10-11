@@ -10,6 +10,14 @@ class ArticleLoader extends Connect
     {
         $sql = "SELECT * FROM articles";
         $result = Connect::getConnection()->query($sql);
+
+        if(isset($result))
+        {
+            while($row = $result->fetch_assoc())
+            {
+                $articles[] = $row;
+            }
+        }
         /*if(isset($result))
         {
             while($row = $result->fetch_assoc())
@@ -26,7 +34,7 @@ class ArticleLoader extends Connect
                 echo "released: " . $row['released'] . "</br></br></br>";
             }
         }*/
-        return $result;
+        return $articles;
     }
 
     private function loadSelectedArticle($selectedAuthor)

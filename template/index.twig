@@ -34,7 +34,12 @@
 
     {% if session.loggedIn==true %}
         {% block articlesModule %}
-                {% include 'modules/articles.twig' %}
+            {#{% for value in test %}
+                        {% include 'modules/articles.twig' with {testvalue : value} %}
+                    {% endfor %}#}
+            {% for value in articles %}
+                {%  include 'modules/articles.twig' with { article : value } %}
+            {% endfor %}
         {% endblock %}
     {% endif %}
 
