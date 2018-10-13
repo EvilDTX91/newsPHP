@@ -1,65 +1,69 @@
 {% extends 'base.twig' %}
 {% block content %}
     <body>
-    Hello Világ!(
-    {{ session.username }} )!
-    {% autoescape %}
-        Everything will be automatically escaped in this block (using the HTML strategy)
-    {% endautoescape %}
+    <div id="teszt1" align="left">
+        Hello Világ!(
+        {{ session.username }} )!
+        {% autoescape %}
+            Everything will be automatically escaped in this block (using the HTML strategy)
+        {% endautoescape %}
 
-    {% for menuElement in menuElements %}
-        {% include 'partial/menuElement.twig' with { menu : menuElement } %}
-    {% endfor %}
+        {% for menuElement in menuElements %}
+            {% include 'partial/menuElement.twig' with { menu : menuElement } %}
+        {% endfor %}
 
-    {% if session.loggedIn==false %}
-        {% block logModule %}
-            {% include 'modules/login.twig' %}
-            <form action="" method="post">
-                <input type="submit" name="loginStart" value="Login">
-            </form>
-        {% endblock %}
-    {% endif %}
+        {% if session.loggedIn==false %}
+            {% block logModule %}
+                {% include 'modules/login.twig' %}
+                <form action="" method="post">
+                    <input type="submit" name="loginStart" value="Login">
+                </form>
+            {% endblock %}
+        {% endif %}
 
-    {% if session.loggedIn==true %}
-        {% block menuModule %}
-            {% include 'modules/menu.twig' %}
-        {% endblock %}
-    {% endif %}
+        {% if session.loggedIn==true %}
+            {% block menuModule %}
+                {% include 'modules/menu.twig' %}
+            {% endblock %}
+        {% endif %}
 
-    {% if session.loggedIn==true %}
-        {% block profileModule %}
-            {% include 'modules/profile.twig' %}
-        {% endblock %}
-    {% endif %}
+        {% if session.loggedIn==true %}
+            {% block profileModule %}
+                {% include 'modules/profile.twig' %}
+            {% endblock %}
+        {% endif %}
 
-    {% if session.loggedIn==true %}
-        {% block articlesModule %}
-            {#{% for value in test %}
-                        {% include 'modules/articles.twig' with {testvalue : value} %}
-                    {% endfor %}#}
-            {% for value in articles %}
-                {%  include 'modules/articles.twig' with { article : value } %}
-            {% endfor %}
-        {% endblock %}
-    {% endif %}
+        {% if session.loggedIn==true %}
+            {% block articlesUpModule %}
+                {% include 'modules/articleUploader.twig' %}
+            {% endblock %}
+        {% endif %}
 
-    {% if session.loggedIn==true %}
-        {% block articlesUpModule %}
-            {% include 'modules/articleUploader.twig' %}
-        {% endblock %}
-    {% endif %}
-
-    {% if session.loggedIn==false %}
-        {% block signUpModule %}
-            {% include 'modules/signUp.twig' %}
-        {% endblock %}
-    {% endif %}
-
-    <div id="menuleft2" align="left">
-        {% block newsmodule %}
-            (+ {{ session.username }} +)
-        {% endblock %}
-        !
+        {% if session.loggedIn==false %}
+            {% block signUpModule %}
+                {% include 'modules/signUp.twig' %}
+            {% endblock %}
+        {% endif %}
+    </div>
+    <div id="teszt2" align="center">
+        {% if session.loggedIn==true %}
+            {% block articlesModule %}
+                {#{% for value in test %}
+                            {% include 'modules/articles.twig' with {testvalue : value} %}
+                        {% endfor %}#}
+                {% for value in articles %}
+                    {% include 'modules/articles.twig' with { article : value } %}
+                {% endfor %}
+            {% endblock %}
+        {% endif %}
+    </div>
+    <div id="teszt3" align="right">
+        <div id="menuleft2" align="left">
+            {% block newsmodule %}
+                (+ {{ session.username }} +)
+            {% endblock %}
+            !
+        </div>
     </div>
 
     </body>
