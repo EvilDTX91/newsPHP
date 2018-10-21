@@ -9,8 +9,8 @@ $twig = new Twig_Environment(new Twig_Loader_Filesystem('template/'));
 
 $menuElements = [
     [
-        'name' => 1,
-        'href' => 1
+        'name' => "Fooldal!",
+        'href' => ""
     ],
     [
         'name' => 2,
@@ -45,6 +45,18 @@ $test = [
 ];
 
 
+$loader = "";
+if (isset($_POST['userProfile'])) {
+    $loader = "modules/profile.twig";
+}
+if (isset($_POST['userSendNews'])) {
+    $loader = "modules/articleUploader.twig";
+}
+if (isset($_POST['SignUp'])) {
+    $loader = "modules/signUp.twig";
+}
+
+
 $articles = new newsphp\classes\ArticleLoader();
 $result = $articles->loadAllArticle();
 /*
@@ -52,15 +64,6 @@ foreach ($result as $value) {
     print_r($value);
     echo "</br>";
 }*/
-
-$twig->display('index.twig',
-    [
-        'session' => $_SESSION,
-        'menuElements' => $menuElements,
-        'articles' => $result,
-        'test' => $test
-    ]);
-
 if (isset($_POST['Login'])) {
     echo 'login</br>';
     $obj = new \newsphp\classes\LoginCheck();
@@ -71,6 +74,7 @@ if (isset($_POST['userLogOut'])) {
     echo 'logout</br>';
     $obj = new \newsphp\classes\LoginCheck();
     $obj->logOut();
+    $loader = "";
 }
 
 if (isset($_POST['userUploadNews'])) {
@@ -87,3 +91,12 @@ if (isset($_POST['sendSignUp'])) {
     $obj->setUserValues($_POST['signUpUserName'], $_POST['signUpPassword'], $_POST['signUpEmail'],
         $_POST['signUpFirstName'], $_POST['signUpLastName'], $bornDate);
 }
+
+$twig->display('index.twig',
+    [
+        'session' => $_SESSION,
+        'menuElements' => $menuElements,
+        'articles' => $result,
+        'test' => $test,
+        'loader' => $loader
+    ]);

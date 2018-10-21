@@ -2,3 +2,10 @@ body {
     background-color: powderblue;
     color: #990000;
 }
+#teszt2
+{
+    height: 2000px;
+    width: 200px;
+    text-align: left;
+    background-color: black;
+}

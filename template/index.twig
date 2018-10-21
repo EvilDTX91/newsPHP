@@ -1,7 +1,8 @@
 {% extends 'base.twig' %}
 {% block content %}
     <body>
-    <div id="teszt1" align="left">
+
+    <div class="teszt1" style="height: 85%; width: 25%; background-color: #9fcdff; float: left;">
         Hello Világ!(
         {{ session.username }} )!
         {% autoescape %}
@@ -15,9 +16,6 @@
         {% if session.loggedIn==false %}
             {% block logModule %}
                 {% include 'modules/login.twig' %}
-                <form action="" method="post">
-                    <input type="submit" name="loginStart" value="Login">
-                </form>
             {% endblock %}
         {% endif %}
 
@@ -27,28 +25,17 @@
             {% endblock %}
         {% endif %}
 
-        {% if session.loggedIn==true %}
-            {% block profileModule %}
-                {% include 'modules/profile.twig' %}
-            {% endblock %}
-        {% endif %}
-
-        {% if session.loggedIn==true %}
-            {% block articlesUpModule %}
-                {% include 'modules/articleUploader.twig' %}
-            {% endblock %}
-        {% endif %}
-
-        {% if session.loggedIn==false %}
-            {% block signUpModule %}
-                {% include 'modules/signUp.twig' %}
+        {% if loader!=null %}
+            {% block sideBlock %}
+                {% include loader %}
             {% endblock %}
         {% endif %}
     </div>
-    <div id="teszt2" align="center">
+
+    <div class="teszt2" style="height: 85%; width: 50%; background-color: #20c997; text-align: left; float: left;">
         {% if session.loggedIn==true %}
             {% block articlesModule %}
-                {#{% for value in test %}
+                {#{% for value in test %}"
                             {% include 'modules/articles.twig' with {testvalue : value} %}
                         {% endfor %}#}
                 {% for value in articles %}
@@ -57,13 +44,12 @@
             {% endblock %}
         {% endif %}
     </div>
-    <div id="teszt3" align="right">
-        <div id="menuleft2" align="left">
-            {% block newsmodule %}
-                (+ {{ session.username }} +)
-            {% endblock %}
-            !
-        </div>
+
+    <div class="teszt3" style="height: 85%; width: 25%; background-color: #9fcdff; float: left;">
+        {% block newsmodule %}
+            (+ {{ session.username }} +)
+        {% endblock %}
+        !
     </div>
 
     </body>
