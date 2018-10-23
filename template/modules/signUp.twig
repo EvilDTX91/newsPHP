@@ -1,15 +1,34 @@
 {% block signUpModule %}
     <form method="POST">
-        Firstname: <input type="text" name="signUpFirstName"> </br>
-        Lastname: <input type="text" name="signUpLastName"> </br>
-        Username: <input type="text" name="signUpUserName"> </br>
-        Password: <input type="password" name="signUpPassword"></br>
-        Re-Password: <input type="password" name="signUpRePassword"></br>
-        E-mail: <input type="text" name="signUpEmail"></br>
-        Born: <input type="text" name="signUpBornYear" size="2" maxlength="4">
-        <input type="text" name="signUpBornMonth" size="1" maxlength="2">
-        <input type="text" name="signUpBornDay" size="1" maxlength="2"></br>
-        <input type="submit" name="sendSignUp" value="Register">
-        <input type="reset" name="resetSignUp" value="Reset">
+        <div>
+            <label for="firstName">Firstname:</label>
+            <input type="text" id="firstName" name="firstName"/>
+        </div>
+        <div>
+            <label for="lastName">Lastname:</label>
+            <input type="text" id="lastName" name="lastName"/>
+        </div>
+        <div>
+            Username: <input type="text" name="userName"/>
+        </div>
+        <div>
+            Password: <input type="password" name="password"/>
+        </div>
+        <div>
+            Re-Password: <input type="password" name="passwordConfirm"/>
+        </div>
+        <div>
+            E-mail: <input type="email" name="email"/>
+        </div>
+        <div>
+            Born:
+            <input type="text" name="dateOfBirth[year]" size="2" maxlength="4"/>
+            <input type="text" name="dateOfBirth[month]" size="1" maxlength="2"/>
+            <input type="text" name="dateOfBirth[day]" size="1" maxlength="2"/>
+        </div>
+        <div>
+            <input type="submit" name="sendSignUp" value="Register">
+            <input type="reset" name="resetSignUp" value="Reset">
+        </div>
     </form>
 {% endblock %}

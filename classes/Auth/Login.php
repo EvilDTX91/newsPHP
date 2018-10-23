@@ -1,25 +1,23 @@
 <?php
 
-namespace newsphp\classes;
+namespace newsphp\Auth;
 
-use NewsPHP\classes\Database\Connect;
+use NewsPhp\Database\Connection;
 
-class LoginCheck extends Connect
+class Login extends Connection
 {
     private $USERNAME = "";
     private $PASSWORD = "";
 
-    public
-    function setLogInCheck($username, $password)
+    public function setLogInCheck($username, $password)
     {
         $this->USERNAME = $username;
         $this->PASSWORD = $password;
         self::logIn();
     }
 
-    private
-    function logIn()
-    {
+    private function logIn(){
+
         $result = self::checkUser();
         if (isset($result)) {
             self::updateLastLogin();
@@ -28,28 +26,26 @@ class LoginCheck extends Connect
         }
     }
 
-    private function checkUser()
-    {
+    private function checkUser(){
+
         if (isset($this->USERNAME) && isset($this->PASSWORD)) {
             $sql = "SELECT * FROM users WHERE username = '$this->USERNAME' AND userpassword = '$this->PASSWORD'";
-            $result = Connect::getConnection()->query($sql);
+            $result = Connection::getConnection()->query($sql);
             return $result;
         }
 
     }
 
-    private
-    function updateLastLogin()
-    {
+    private function updateLastLogin(){
+
         if (isset($this->USERNAME) && isset($this->PASSWORD)) {
             $sql = "UPDATE users SET lastlogin=now() WHERE username='$this->USERNAME' AND userpassword='$this->PASSWORD'";
-            Connect::getConnection()->query($sql);
+            Connection::getConnection()->query($sql);
         }
     }
 
-    private
-    function setProfile()
-    {
+    private function setProfile(){
+
         $result = self::checkUser();
         if (isset($result)) {
             while ($row = $result->fetch_assoc()) {
@@ -73,17 +69,16 @@ class LoginCheck extends Connect
     {
         $sql = "INSERT INTO sessions(session,username,userID,userPW)
 VALUES ('" . $_SESSION['sessionID'] . "','" . $_SESSION['username'] . "','" . $_SESSION['id'] . "','" . $_SESSION['password'] . "')";
-        Connect::getConnection()->query($sql);
+        Connection::getConnection()->query($sql);
     }
 
-    public
-    function logOut()
+    public function logOut()
     {
         if (isset($_SESSION['username'])) {
             echo "LOGOUT " . $_SESSION['username'] . "</br>";
             $username = $_SESSION['username'];
             $sql = "DELETE FROM sessions WHERE username='$username'";
-            Connect::getConnection()->query($sql);
+            Connection::getConnection()->query($sql);
             session_destroy();
         }
     }

@@ -13,19 +13,17 @@
             {% include 'partial/menuElement.twig' with { menu : menuElement } %}
         {% endfor %}
 
-        {% if session.loggedIn==false %}
+        {% if not session.loggedIn %}
             {% block logModule %}
                 {% include 'modules/login.twig' %}
             {% endblock %}
-        {% endif %}
-
-        {% if session.loggedIn==true %}
+        {% else %}
             {% block menuModule %}
                 {% include 'modules/menu.twig' %}
             {% endblock %}
         {% endif %}
 
-        {% if loader!=null %}
+        {% if loader %}
             {% block sideBlock %}
                 {% include loader %}
             {% endblock %}

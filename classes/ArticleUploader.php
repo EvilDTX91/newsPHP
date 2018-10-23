@@ -1,10 +1,10 @@
 <?php
 
-namespace newsphp\classes;
+namespace newsphp;
 
-use NewsPHP\classes\Database\Connect;
+use NewsPHP\classes\Database\Connection;
 
-class ArticleUploader extends Connect
+class ArticleUploader extends Connection
 {
     private $AUTHORID = "";
     private $ARTICLE = "";
@@ -35,6 +35,6 @@ class ArticleUploader extends Connect
     {
         $sql = "INSERT INTO articles(authorID, article, title)
 VALUES ('" . $this->AUTHORID . "','" . $this->ARTICLE . "','" . $this->TITLE . "')";
-        Connect::getConnection()->query($sql);
+        Connection::getConnection()->query($sql);
     }
 }

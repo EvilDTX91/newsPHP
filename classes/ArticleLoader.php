@@ -1,15 +1,15 @@
 <?php
 
-namespace newsphp\classes;
+namespace NewsPhp;
 
-use NewsPHP\classes\Database\Connect;
+use NewsPhp\Database\Connection;
 
-class ArticleLoader extends Connect
+class ArticleLoader extends Connection
 {
     public function loadAllArticle()
     {
         $sql = "SELECT * FROM articles";
-        $result = Connect::getConnection()->query($sql);
+        $result = Connection::getConnection()->query($sql);
 
         if(isset($result))
         {
@@ -40,14 +40,14 @@ class ArticleLoader extends Connect
     private function loadSelectedArticle($selectedAuthor)
     {
         $sql = "SELECT * FROM articles WHERE authorID='$selectedAuthor'";
-        $result = Connect::getConnection()->query($sql);
+        $result = Connection::getConnection()->query($sql);
         return $result;
     }
 
     private function getAuthorName($authorID)
     {
         $sql = "SELECT username FROM users WHERE id='$authorID'";
-        $result = Connect::getConnection()->query($sql);
+        $result = Connection::getConnection()->query($sql);
         $authorName = $result->fetch_assoc();
         return $authorName['username'];
     }
@@ -55,7 +55,7 @@ class ArticleLoader extends Connect
     private function getAuthorID($authorName)
     {
         $sql = "SELECT id FROM users WHERE username='$authorName'";
-        $result = Connect::getConnection()->query($sql);
+        $result = Connection::getConnection()->query($sql);
         $authorID = $result->fetch_assoc();
         return $authorID['id'];
     }

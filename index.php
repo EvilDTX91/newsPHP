@@ -1,9 +1,7 @@
-<?php require("Settings/config.php");
-include('classes/database/connect.php');
-include('classes/articleLoader.php');
-include('classes/articleUploader.php');
-include('classes/loginCheck.php');
-include('classes/signUpRegister.php');
+<?php
+
+session_start();
+require_once __DIR__ . '/vendor/autoload.php';
 
 $twig = new Twig_Environment(new Twig_Loader_Filesystem('template/'));
 
@@ -57,7 +55,7 @@ if (isset($_POST['SignUp'])) {
 }
 
 
-$articles = new newsphp\classes\ArticleLoader();
+$articles = new NewsPhp\ArticleLoader;
 $result = $articles->loadAllArticle();
 /*
 foreach ($result as $value) {
@@ -66,30 +64,40 @@ foreach ($result as $value) {
 }*/
 if (isset($_POST['Login'])) {
     echo 'login</br>';
-    $obj = new \newsphp\classes\LoginCheck();
+    $obj = new \NewsPhp\Auth\Login;
     $obj->setLogInCheck($_POST['loginUserName'], $_POST['loginPassword']);
 }
 
 if (isset($_POST['userLogOut'])) {
     echo 'logout</br>';
-    $obj = new \newsphp\classes\LoginCheck();
+    $obj = new \NewsPhp\Auth\Login;
     $obj->logOut();
     $loader = "";
 }
 
 if (isset($_POST['userUploadNews'])) {
     echo 'uploadNews</br>';
-    $obj = new \newsphp\classes\ArticleUploader();
+    $obj = new \NewsPhp\ArticleUploader;
     $obj->setArticleData($_SESSION['id'], $_POST['userWriteNews'], $_POST['userWriteTitle']);
 }
 
+
 if (isset($_POST['sendSignUp'])) {
-    echo 'register<br>';
-    $bornDate = $_POST['signUpBornYear'] . $_POST['signUpBornMonth'] . $_POST['signUpBornDay'];
-    echo $bornDate . "<br>";
-    $obj = new \newsphp\classes\SignUpRegister();
-    $obj->setUserValues($_POST['signUpUserName'], $_POST['signUpPassword'], $_POST['signUpEmail'],
-        $_POST['signUpFirstName'], $_POST['signUpLastName'], $bornDate);
+    $registerUserData = new \NewsPhp\Auth\Register\UserData;
+    $registerUserData->setUserName($_POST['userName']);
+    $registerUserData->setPassword($_POST['password']);
+    $registerUserData->setEmail($_POST['email']);
+    $registerUserData->setFirstName($_POST['firstName']);
+    $registerUserData->setLastName($_POST['lastName']);
+    $registerUserData->setDateOfBirth(join('', $_POST['dateOfBirth']));
+
+    $registerHandler = (new \NewsPhp\Auth\Register\RegisterFactory)->getClass();
+
+    try {
+        $registerHandler->initRegister($registerUserData);
+    } catch (Exception $exception) {
+        echo $exception->getMessage();
+    }
 }
 
 $twig->display('index.twig',
