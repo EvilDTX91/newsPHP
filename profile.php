@@ -15,5 +15,3 @@ if (isset($_GET["userProfile"])) {
         echo "Hi " . $_SESSION["username"] . "! (" . $_SESSION["userLoggedIn"] . ") PROFILE";
     }
 }
-//echo "<a href='index.php'><button>Back!</button>";
-?>
