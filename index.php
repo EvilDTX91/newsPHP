@@ -1,42 +1,102 @@
-<?php require("Settings/config.php"); ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>news!</title>
-    <link rel="stylesheet" type="text/css" a href="style/style.css">
-</head>
-<body>
-<div id="headLogo" align="center"><a href="index.php"><img src="pictures/logo1.jpg"></a></div>
-<div id="menuleft1" align="left">
-    <?php
-    include('page.php');
-    ?>
-    <div id="menuleft3" align="left">
-        <?php //echo "Hi " . $_SESSION["username"] . "! INDEX"; ?>
-    </div>
-</div>
+<?php require("Settings/config.php");
+include('classes/database/connect.php');
+include('classes/articleLoader.php');
+include('classes/articleUploader.php');
+include('classes/loginCheck.php');
+include('classes/signUpRegister.php');
+
+$twig = new Twig_Environment(new Twig_Loader_Filesystem('template/'));
+
+$menuElements = [
+    [
+        'name' => "Fooldal!",
+        'href' => ""
+    ],
+    [
+        'name' => 2,
+        'href' => 2
+    ],
+    [
+        'name' => 3,
+        'href' => 3
+    ],
+    [
+        'name' => 4,
+        'href' => 4
+    ]
+];
+
+$test = [
+    [
+        'x' => 'x1',
+        'y' => 'y1',
+        'z' => 'z1'
+    ],
+    [
+        'x' => 'x2',
+        'y' => 'y2',
+        'z' => 'z2'
+    ],
+    [
+        'x' => 'x3',
+        'y' => 'y3',
+        'z' => 'z3'
+    ]
+];
 
 
-<div name="right" align="right">
-    <form action="articleUploader.php" method="get">
-        <?php //include ("menu.php")
-        $sessionID = session_id();
-        echo "</br>Session ID: " . session_id() . "</br>";
-        ?>
-        <!--<input type="submit" name="userAdatlap" value="Adatlap">
-        <input type="submit" name="userSendNews" value="Hír beküldése">
-        <input type="submit" name="userLogOut" value="Kijelentkezés">-->
-    </form>
-</div>
+$loader = "";
+if (isset($_POST['userProfile'])) {
+    $loader = "modules/profile.twig";
+}
+if (isset($_POST['userSendNews'])) {
+    $loader = "modules/articleUploader.twig";
+}
+if (isset($_POST['SignUp'])) {
+    $loader = "modules/signUp.twig";
+}
 
-<div name="mid" align="center">
-    <?php include("news.php"); ?>
-</div>
-<div id="bottomCright" align="center">
-    <footer>
-        <small>&copy; Copyright 2018, NT Corporation</small>
-    </footer>
-</div>
-</body>
-<html>
+
+$articles = new newsphp\classes\ArticleLoader();
+$result = $articles->loadAllArticle();
+/*
+foreach ($result as $value) {
+    print_r($value);
+    echo "</br>";
+}*/
+if (isset($_POST['Login'])) {
+    echo 'login</br>';
+    $obj = new \newsphp\classes\LoginCheck();
+    $obj->setLogInCheck($_POST['loginUserName'], $_POST['loginPassword']);
+}
+
+if (isset($_POST['userLogOut'])) {
+    echo 'logout</br>';
+    $obj = new \newsphp\classes\LoginCheck();
+    $obj->logOut();
+    $loader = "";
+}
+
+if (isset($_POST['userUploadNews'])) {
+    echo 'uploadNews</br>';
+    $obj = new \newsphp\classes\ArticleUploader();
+    $obj->setArticleData($_SESSION['id'], $_POST['userWriteNews'], $_POST['userWriteTitle']);
+}
+
+if (isset($_POST['sendSignUp'])) {
+    echo 'register<br>';
+    $bornDate = $_POST['signUpBornYear'] . $_POST['signUpBornMonth'] . $_POST['signUpBornDay'];
+    echo $bornDate . "<br>";
+    $obj = new \newsphp\classes\SignUpRegister();
+    $obj->setUserValues($_POST['signUpUserName'], $_POST['signUpPassword'], $_POST['signUpEmail'],
+        $_POST['signUpFirstName'], $_POST['signUpLastName'], $bornDate);
+}
+
+$twig->display('index.twig',
+    [
+        'session' => $_SESSION,
+        'menuElements' => $menuElements,
+        'articles' => $result,
+        'test' => $test,
+        'loader' => $loader
+    ]);

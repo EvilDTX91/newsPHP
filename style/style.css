@@ -1,17 +1,11 @@
 body {
-	background-color: powderblue;
-	color: #990000;
+    background-color: powderblue;
+    color: #990000;
 }
-
-menuleft1 {
-	height: 200px;
-	width: 200px;
-	background-color: coral;
-	color: chartreuse;
-}
-
-menuleft3 {
-	height: 200px;
-	width: 200px;
-	background-color: coral;
+#teszt2
+{
+    height: 2000px;
+    width: 200px;
+    text-align: left;
+    background-color: black;
 }

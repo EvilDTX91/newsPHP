@@ -1,0 +1,56 @@
+{% extends 'base.twig' %}
+{% block content %}
+    <body>
+
+    <div class="teszt1" style="height: 85%; width: 25%; background-color: #9fcdff; float: left;">
+        Hello Világ!(
+        {{ session.username }} )!
+        {% autoescape %}
+            Everything will be automatically escaped in this block (using the HTML strategy)
+        {% endautoescape %}
+
+        {% for menuElement in menuElements %}
+            {% include 'partial/menuElement.twig' with { menu : menuElement } %}
+        {% endfor %}
+
+        {% if session.loggedIn==false %}
+            {% block logModule %}
+                {% include 'modules/login.twig' %}
+            {% endblock %}
+        {% endif %}
+
+        {% if session.loggedIn==true %}
+            {% block menuModule %}
+                {% include 'modules/menu.twig' %}
+            {% endblock %}
+        {% endif %}
+
+        {% if loader!=null %}
+            {% block sideBlock %}
+                {% include loader %}
+            {% endblock %}
+        {% endif %}
+    </div>
+
+    <div class="teszt2" style="height: 85%; width: 50%; background-color: #20c997; text-align: left; float: left;">
+        {% if session.loggedIn==true %}
+            {% block articlesModule %}
+                {#{% for value in test %}"
+                            {% include 'modules/articles.twig' with {testvalue : value} %}
+                        {% endfor %}#}
+                {% for value in articles %}
+                    {% include 'modules/articles.twig' with { article : value } %}
+                {% endfor %}
+            {% endblock %}
+        {% endif %}
+    </div>
+
+    <div class="teszt3" style="height: 85%; width: 25%; background-color: #9fcdff; float: left;">
+        {% block newsmodule %}
+            (+ {{ session.username }} +)
+        {% endblock %}
+        !
+    </div>
+
+    </body>
+{% endblock %}

@@ -23,4 +23,3 @@ if (isset($_POST["userUploadNews"])) {
     echo "</br><a href = index.php><button>Back!</button>";
 }
 $connect->close();
-?>

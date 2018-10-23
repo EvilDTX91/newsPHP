@@ -1,0 +1,10 @@
+{% block profileModule %}
+    <form>
+        </br>Username: {{ session.username }}
+        </br>Name: {{ session.lastname }} {{ session.firstname }}
+        </br>Born: {{ session.born }}
+        </br>E-mail: {{ session.email }}
+        </br>Registered: {{ session.registered }}
+        </br>Last Here: {{ session.lastlogin }}
+    </form>
+{% endblock %}

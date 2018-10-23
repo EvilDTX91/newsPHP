@@ -20,4 +20,3 @@ if (isset($_POST["sendSignUp"])) {
 }
 echo "<a href = index.php><button>Back!</button></a>";
 $connect->close();
-?>

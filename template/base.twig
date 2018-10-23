@@ -1,0 +1,25 @@
+{% block head %}
+    {% include 'partial/head.twig' %}
+    {% include 'partial/header.twig' %}
+{% endblock %}
+
+{% block content %}
+    {% block contentLeft %}
+        <div id='logM'>{% block logModule %}{% endblock %}</div>
+        <div id='menuM'>{% block menuModule %}{% endblock %}</div>
+        <div id='profM'>{% block profileModule %}{% endblock %}</div>
+        <div id='signUpM'>{% block signUpModule %}{% endblock %}</div>
+        <div id='articleUpM'>{% block articlesUpModule %}{% endblock %}</div>
+    {% endblock %}
+
+    {% block contentCenter %}
+        <div id='articleM' align="center">{% block articlesModule %}{% endblock %}</div>
+    {% endblock %}
+
+    {% block contentRight %}
+    {% endblock %}
+{% endblock %}
+
+{% block footer %}
+    {% include 'partial/footer.twig' %}
+{% endblock %}

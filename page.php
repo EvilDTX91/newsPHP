@@ -7,5 +7,3 @@ if (isset($USER)) {
     $content = null;
     include('login.php');
 }
-//echo $content;
-?>
