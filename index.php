@@ -79,7 +79,7 @@ if (isset($_POST['userUploadNews'])) {
 
 if (isset($_POST['sendSignUp'])) {
     echo 'register<br>';
-    $dateofbirth = join('',$_POST['DateOfBirth']);
+    $dateofbirth = join('', $_POST['DateOfBirth']);
     echo $dateofbirth . "<br>";
 
     $registerUserData = new \NewsPhp\Auth\Register\UserData;
@@ -93,11 +93,9 @@ if (isset($_POST['sendSignUp'])) {
 
     $registHandler = (new \NewsPhp\Auth\Register\RegisterFactory)->getClass();
 
-    try{
-    $registHandler->initRegister($registerUserData);
-    }
-    catch (Exception $exception)
-    {
+    try {
+        $registHandler->initRegister($registerUserData);
+    } catch (Exception $exception) {
         echo "Error: " . $exception->getMessage();
     }
 }

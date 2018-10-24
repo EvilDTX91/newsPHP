@@ -6,17 +6,16 @@ use NewsPhp\Database\Connection;
 
 class Register
 {
-    /**
-     * @var
-     */
     private $connectionDriver;
-    /**
-     * @var
-     */
     private $validator;
 
+    /**
+     * @param UserData $userData
+     * @throws \Exception
+     */
     public function initRegister(UserData $userData): void
     {
+        $this->getValidator()->validate($userData);
         self::register($userData);
     }
 
@@ -36,20 +35,16 @@ class Register
         $dateofbirth = $userData->getDATEOFBIRTH();
 
         $statement->bind_param(
-        'sssssi',
-        $username,
-        $password,
-        $email,
-        $firstname,
-        $lastname,
-        $dateofbirth
-    );
+            'sssssi',
+            $username,
+            $password,
+            $email,
+            $firstname,
+            $lastname,
+            $dateofbirth
+        );
 
         $statement->execute();
-
-
-        /*('" . $this->USERNAME . "','" . $this->PASSWORD . "','" . $this->EMAIL . "','" . $this->FIRSTNAME . "','" . $this->LASTNAME . "','" . $this->BORN . "')";
-                Connect::getConnection()->query($sql);*/
     }
 
     /**
@@ -71,7 +66,7 @@ class Register
     /**
      * @return mixed
      */
-    public function getValidator()
+    public function getValidator(): ValidatorInterface
     {
         return $this->validator;
     }
@@ -79,7 +74,7 @@ class Register
     /**
      * @param mixed $validator
      */
-    public function setValidator($validator): void
+    public function setValidator(ValidatorInterface $validator): void
     {
         $this->validator = $validator;
     }
