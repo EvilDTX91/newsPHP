@@ -55,35 +55,35 @@ if (isset($_POST['SignUp'])) {
 }
 
 
-$articles = new newsphp\classes\ArticleLoader();
+$articles = new NewsPhp\Classes\ArticleLoader;
 $result = $articles->loadAllArticle();
 
 if (isset($_POST['Login'])) {
     echo 'login</br>';
-    $obj = new \newsphp\classes\LoginCheck();
+    $obj = new \NewsPhp\Auth\Login;
     $obj->setLogInCheck($_POST['loginUserName'], $_POST['loginPassword']);
 }
 
 if (isset($_POST['userLogOut'])) {
     echo 'logout</br>';
-    $obj = new \newsphp\classes\LoginCheck();
+    $obj = new \NewsPhp\Auth\Login;
     $obj->logOut();
     $loader = "";
 }
 
 if (isset($_POST['userUploadNews'])) {
     echo 'uploadNews</br>';
-    $obj = new \newsphp\classes\ArticleUploader();
+    $obj = new \NewsPhp\Classes\ArticleUploader;
     $obj->setArticleData($_SESSION['id'], $_POST['userWriteNews'], $_POST['userWriteTitle']);
 }
 
 if (isset($_POST['sendSignUp'])) {
     echo 'register<br>';
-    $bornDate = $_POST['signUpBornYear'] . $_POST['signUpBornMonth'] . $_POST['signUpBornDay'];
-    echo $bornDate . "<br>";
-    $obj = new \newsphp\classes\SignUpRegister();
-    $obj->setUserValues($_POST['signUpUserName'], $_POST['signUpPassword'], $_POST['signUpEmail'],
-        $_POST['signUpFirstName'], $_POST['signUpLastName'], $bornDate);
+    $dateofbirth = join($_POST['DateOfBirth']);
+    echo $dateofbirth . "<br>";
+    $obj = new \NewsPhp\Classes\Register;
+    $obj->setUserValues($_POST['username'], $_POST['password'], $_POST['email'],
+        $_POST['firstname'], $_POST['lastname'], $dateofbirth);
 }
 
 $twig->display('index.twig',

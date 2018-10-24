@@ -4,7 +4,7 @@ namespace NewsPhp\Database;
 
 use mysqli;
 
-class Connect
+class Connection
 {
     /**
      * @var \mysqli
