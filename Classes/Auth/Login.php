@@ -1,8 +1,8 @@
 <?php
 
-namespace Newsphp\classes\Auth;
+namespace NewsPhp\Auth;
 
-class Login extends Connect
+class Login
 {
     private $USERNAME = "";
     private $PASSWORD = "";
