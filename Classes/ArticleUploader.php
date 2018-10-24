@@ -1,10 +1,9 @@
 <?php
 
-namespace newsphp\classes;
+namespace NewsPhp;
 
-use NewsPHP\classes\Database\Connect;
 
-class ArticleUploader extends Connect
+class ArticleUploader
 {
     private $AUTHORID = "";
     private $ARTICLE = "";

@@ -17,7 +17,7 @@ class Register
 
     public function initRegister(UserData $userData): void
     {
-        self::register();
+        self::register($userData);
     }
 
     private function register(UserData $userData): void

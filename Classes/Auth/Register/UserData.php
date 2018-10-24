@@ -6,7 +6,7 @@
  * Time: 13:53
  */
 
-namespace Auth\Register;
+namespace NewsPhp\Auth\Register;
 
 
 class UserData
