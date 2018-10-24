@@ -2,15 +2,19 @@
 
 namespace NewsPhp\Auth;
 
+use NewsPhp\Database\Connection;
+
 class Login
 {
-    private $USERNAME = "";
-    private $PASSWORD = "";
+    private $connectionDriver;
+    private $USERNAME;
+    private $PASSWORD;
 
     public function setLogInCheck($username, $password){
 
         $this->USERNAME = $username;
         $this->PASSWORD = $password;
+        $this->setConnectionDriver(new Connection);
         self::logIn();
     }
 
@@ -28,7 +32,7 @@ class Login
 
         if (isset($this->USERNAME) && isset($this->PASSWORD)) {
             $sql = "SELECT * FROM users WHERE username = '$this->USERNAME' AND userpassword = '$this->PASSWORD'";
-            $result = Connect::getConnection()->query($sql);
+            $result = $this->getConnectionDriver()->getConnection()->query($sql);
             return $result;
         }
 
@@ -38,7 +42,7 @@ class Login
 
         if (isset($this->USERNAME) && isset($this->PASSWORD)) {
             $sql = "UPDATE users SET lastlogin=now() WHERE username='$this->USERNAME' AND userpassword='$this->PASSWORD'";
-            Connect::getConnection()->query($sql);
+            $this->getConnectionDriver()->getConnection()->query($sql);
         }
     }
 
@@ -66,17 +70,28 @@ class Login
 
         $sql = "INSERT INTO sessions(session,username,userID,userPW)
 VALUES ('" . $_SESSION['sessionID'] . "','" . $_SESSION['username'] . "','" . $_SESSION['id'] . "','" . $_SESSION['password'] . "')";
-        Connect::getConnection()->query($sql);
+        $this->getConnectionDriver()->getConnection()->query($sql);
     }
 
     public function logOut(){
 
         if (isset($_SESSION['username'])) {
+            $this->setConnectionDriver(new Connection);
             echo "LOGOUT " . $_SESSION['username'] . "</br>";
             $username = $_SESSION['username'];
             $sql = "DELETE FROM sessions WHERE username='$username'";
-            Connect::getConnection()->query($sql);
+            $this->getConnectionDriver()->getConnection()->query($sql);
             session_destroy();
         }
+    }
+
+    public function getConnectionDriver(): Connection
+    {
+        return $this->connectionDriver;
+    }
+
+    public function setConnectionDriver(Connection $connectionDriver): void
+    {
+        $this->connectionDriver = $connectionDriver;
     }
 }

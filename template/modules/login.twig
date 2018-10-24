@@ -1,11 +1,19 @@
 {% block logModule %}
-        <div>
-            <form method="POST">
-                Username: <input type="text" name="loginUserName"></br>
-                Password: <input type="password" name="loginPassword"></br>
-                <input type="submit" name="Login" value="Login">
-                <input type="submit" name="SignUp" value="SignUp">
-                <input type="submit" name="ForgotPassword" value="ForgotPassword">
-            </form>
-        </div>
+    <div>
+        <form method="POST">
+            <div>
+                <label for="username">Username: </label>
+                <input type="text" id="username" name="username"/>
+            </div>
+            <div>
+                <label for="password">Password: </label>
+                <input type="password" id="password" name="password"/>
+            </div>
+            <div>
+                <input type="submit" name="Login" value="Login"/>
+                <input type="submit" name="SignUp" value="SignUp"/>
+                <input type="submit" name="ForgotPassword" value="ForgotPassword"/>
+            </div>
+        </form>
+    </div>
 {% endblock %}

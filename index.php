@@ -61,7 +61,7 @@ $result = $articles->loadAllArticle();
 if (isset($_POST['Login'])) {
     echo 'login</br>';
     $obj = new \NewsPhp\Auth\Login;
-    $obj->setLogInCheck($_POST['loginUserName'], $_POST['loginPassword']);
+    $obj->setLogInCheck($_POST['username'], $_POST['password']);
 }
 
 if (isset($_POST['userLogOut'])) {
