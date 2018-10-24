@@ -1,9 +1,7 @@
-<?php require("Settings/config.php");
-include('classes/database/connect.php');
-include('classes/articleLoader.php');
-include('classes/articleUploader.php');
-include('classes/loginCheck.php');
-include('classes/signUpRegister.php');
+<?php
+session_start();
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $twig = new Twig_Environment(new Twig_Loader_Filesystem('template/'));
 
@@ -59,11 +57,7 @@ if (isset($_POST['SignUp'])) {
 
 $articles = new newsphp\classes\ArticleLoader();
 $result = $articles->loadAllArticle();
-/*
-foreach ($result as $value) {
-    print_r($value);
-    echo "</br>";
-}*/
+
 if (isset($_POST['Login'])) {
     echo 'login</br>';
     $obj = new \newsphp\classes\LoginCheck();

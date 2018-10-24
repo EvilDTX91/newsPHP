@@ -1,16 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: denve
- * Date: 2018. 09. 18.
- * Time: 11:03
- */
 
-namespace newsphp\classes;
+namespace Newsphp\classes\Auth;
 
-use NewsPHP\classes\Database\Connect;
-
-class SignUpRegister extends Connect
+class Register extends Connect
 {
     private $USERNAME = "";
     private $PASSWORD = "";
@@ -19,8 +11,8 @@ class SignUpRegister extends Connect
     private $LASTNAME = "";
     private $BORN = "";
 
-    public function setUserValues($username, $password, $email, $firstname, $lastname, $born)
-    {
+    public function setUserValues($username, $password, $email, $firstname, $lastname, $born){
+
         if (isset($username)) {
             $this->USERNAME = $username;
         }
@@ -44,8 +36,8 @@ class SignUpRegister extends Connect
 
     }
 
-    private function registNewUser()
-    {
+    private function registNewUser(){
+
         $sql = "INSERT INTO users (username,userpassword,email,firstname,lastname,born) VALUES
 ('" . $this->USERNAME . "','" . $this->PASSWORD . "','" . $this->EMAIL . "','" . $this->FIRSTNAME . "','" . $this->LASTNAME . "','" . $this->BORN . "')";
         Connect::getConnection()->query($sql);
