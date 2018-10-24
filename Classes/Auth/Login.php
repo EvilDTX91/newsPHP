@@ -73,18 +73,6 @@ VALUES ('" . $_SESSION['sessionID'] . "','" . $_SESSION['username'] . "','" . $_
         $this->getConnectionDriver()->getConnection()->query($sql);
     }
 
-    public function logOut(){
-
-        if (isset($_SESSION['username'])) {
-            $this->setConnectionDriver(new Connection);
-            echo "LOGOUT " . $_SESSION['username'] . "</br>";
-            $username = $_SESSION['username'];
-            $sql = "DELETE FROM sessions WHERE username='$username'";
-            $this->getConnectionDriver()->getConnection()->query($sql);
-            session_destroy();
-        }
-    }
-
     public function getConnectionDriver(): Connection
     {
         return $this->connectionDriver;

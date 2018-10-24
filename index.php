@@ -66,7 +66,7 @@ if (isset($_POST['Login'])) {
 
 if (isset($_POST['userLogOut'])) {
     echo 'logout</br>';
-    $obj = new \NewsPhp\Auth\Login;
+    $obj = new \NewsPhp\Auth\Logout();
     $obj->logOut();
     $loader = "";
 }
