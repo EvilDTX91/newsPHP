@@ -2,11 +2,34 @@
 <li>Test Y: {{ testvalue.y }}</a></li>
 <li>Test Z: {{ testvalue.z }}</li>#}
 {% block articlesModule %}
-    NewsID:{{ article.newsID }}</br>
-    Author:{{ article.authorID }}</br>
-    Article:{{ article.article }}</br>
-    Title:{{ article.title }}</br>
-    Category:{{ article.category }}</br>
-    Readed:{{ article.readed }}</br>
-    Uploaded:{{ article.released }}</br></br>
+    <div style="padding: 20px">
+        <div>
+            <label>NewsID:</label>
+            <label>{{ article.newsID }}</label>
+        </div>
+        <div>
+            <label>Author:</label>
+            <label>{{ article.authorID }}</label>
+        </div>
+        <div>
+            <label>Article:</label>
+            <label>{{ article.article }}</label>
+        </div>
+        <div>
+            <label>Title:</label>
+            <label>{{ article.title }}</label>
+        </div>
+        <div>
+            <label>Category:</label>
+            <label>{{ article.category }}</label>
+        </div>
+        <div>
+            <label>Readed:</label>
+            <label>{{ article.readed }}</label>
+        </div>
+        <div>
+            <label>Uploaded:</label>
+            <label>{{ article.released }}</label>
+        </div>
+    </div>
 {% endblock %}

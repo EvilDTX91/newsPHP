@@ -1,10 +1,28 @@
 {% block profileModule %}
     <form>
-        </br>Username: {{ session.username }}
-        </br>Name: {{ session.lastname }} {{ session.firstname }}
-        </br>Born: {{ session.born }}
-        </br>E-mail: {{ session.email }}
-        </br>Registered: {{ session.registered }}
-        </br>Last Here: {{ session.lastlogin }}
+        <div>
+            <label>Username:</label>
+            <label>{{ session.username }}</label>
+        </div>
+        <div>
+            <label>Name:</label>
+            <label>{{ session.lastname }} {{ session.firstname }}</label>
+        </div>
+        <div>
+            <label>Date of Birth:</label>
+            <label>{{ session.dateofbirth }}</label>
+        </div>
+        <div>
+            <label>E-mail::</label>
+            <label>{{ session.email }}</label>
+        </div>
+        <div>
+            <label>Registered:</label>
+            <label>{{ session.registered }}</label>
+        </div>
+        <div>
+            <label>Last Here:</label>
+            <label>{{ session.lastlogin }}</label>
+        </div>
     </form>
 {% endblock %}

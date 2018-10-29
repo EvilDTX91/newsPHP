@@ -23,7 +23,7 @@ class Register
     {
 
         $statement = $this->getConnectionDriver()->getConnection()->prepare(
-            "INSERT INTO users (username,userpassword,email,firstname,lastname,born)
+            "INSERT INTO users (username,userpassword,email,firstname,lastname,dateofbirth)
                 VALUES 
                 (?,?,?,?,?,?)");
 
