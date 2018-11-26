@@ -18,22 +18,6 @@ class ArticleLoader extends Connection
                 $articles[] = $row;
             }
         }
-        /*if(isset($result))
-        {
-            while($row = $result->fetch_assoc())
-            {
-                $author = self::getAuthorName($row['authorID']);
-
-                echo "newsID :" . $row['newsID'] . "</br>";
-                echo "authorID: " . $row['authorID'] . "</br>";
-                echo "authorName: " . $author . "</br>";
-                echo "article: " . $row['article'] . "</br>";
-                echo "title: " . $row['title'] . "</br>";
-                echo "category: " . $row['category'] . "</br>";
-                echo "readed: " . $row['readed'] . "</br>";
-                echo "released: " . $row['released'] . "</br></br></br>";
-            }
-        }*/
         return $articles;
     }
 
