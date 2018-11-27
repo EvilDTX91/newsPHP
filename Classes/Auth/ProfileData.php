@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: denve
- * Date: 2018. 10. 29.
- * Time: 10:11
- */
-
 namespace NewsPhp\Auth;
 
 

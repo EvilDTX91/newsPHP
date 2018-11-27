@@ -1,6 +1,6 @@
 <?php
 
-namespace NewsPhp;
+namespace NewsPhp\Article;
 
 
 class ArticleUploader

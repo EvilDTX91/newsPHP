@@ -55,7 +55,7 @@ if (isset($_POST['SignUp'])) {
 }
 
 
-$articles = new NewsPhp\ArticleLoader;
+$articles = new NewsPhp\Article\ArticleLoader;
 $result = $articles->loadAllArticle();
 
 if (isset($_POST['Login'])) {
