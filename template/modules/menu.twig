@@ -4,8 +4,14 @@
         <div>
         <input type="submit" name="userProfile" value="Profile"/>
         <input type="submit" name="userSendNews" value="Send Article"/>
-        <input type="submit" name="userLogOut" value="Logout"/>
+        <input type="submit" name="userLogOut" onclick="userLogOff()" value="Logout"/>
         </div>
     </form>
 </div>
+    <script>
+        function userLogOff() {
+            //alert("Visszlát " + {{ session.username }} + "!");
+            alert("Visszlát!");
+        }
+    </script>
 {% endblock %}

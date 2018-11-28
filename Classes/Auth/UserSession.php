@@ -8,15 +8,18 @@ class UserSession
 {
     private $connectionDriver;
 
-    public function createUserSession(): void
+    public function createUserSession()
     {
+        $this->setConnectionDriver(new Connection);
         $sql = "INSERT INTO sessions(session,username,userID,userPW)
 VALUES ('" . $_SESSION['sessionID'] . "','" . $_SESSION['username'] . "','" . $_SESSION['id'] . "','" . $_SESSION['password'] . "')";
         $this->getConnectionDriver()->getConnection()->query($sql);
     }
 
-    public function deleteUserSession(): void
+    public function deleteUserSession()
     {
+        $this->setConnectionDriver(new Connection);
+        $username = $_SESSION['username'];
         $sql = "DELETE * FROM sessions where username='" . $_SESSION['username'] . "'";
         $this->getConnectionDriver()->getConnection()->query($sql);
     }
@@ -30,5 +33,4 @@ VALUES ('" . $_SESSION['sessionID'] . "','" . $_SESSION['username'] . "','" . $_
     {
         $this->connectionDriver = $connectionDriver;
     }
-
 }

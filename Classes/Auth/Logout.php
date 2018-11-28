@@ -11,13 +11,10 @@ class Logout
     public function logOut()
     {
         if (isset($_SESSION['username'])) {
+            echo "LOGOUT " . $_SESSION['username'] . "</br>";
             $this->setConnectionDriver(new Connection);
-            $username = $_SESSION['username'];
             $deleteSession = new UserSession;
             $deleteSession->deleteUserSession();
-            $sql = "DELETE * FROM sessions where username='$username'";
-            $this->getConnectionDriver()->getConnection()->query($sql);
-            echo "LOGOUT " . $_SESSION['username'] . "</br>";
             session_destroy();
         }
     }

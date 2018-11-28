@@ -2,6 +2,7 @@
 
 namespace NewsPhp\Auth;
 
+use NewsPhp\Auth\Register\UserData;
 use NewsPhp\Database\Connection;
 
 class Login
@@ -18,8 +19,11 @@ class Login
         $this->setPASSWORD($password);
         $this->setConnectionDriver(new Connection);
         self::logIn();
-        $profile = new ProfileData;
-        $profile->setProfileData($this->userLog);
+        $setUserProfileData = new ProfileData;
+        $setUserProfileData->setProfileData($this->userLog);
+        $createUserSession = new UserSession();
+        $createUserSession->createUserSession();
+        $this->updateLastLogin();
     }
 
     private function logIn()
@@ -29,8 +33,6 @@ class Login
             if (isset($this->USERNAME) && isset($this->PASSWORD)) {
                 $sql = "SELECT * FROM users WHERE username = '$this->USERNAME' AND userpassword = '$this->PASSWORD'";
                 $this->setUserLog($this->getConnectionDriver()->getConnection()->query($sql));
-                updateLastLogin();
-                createSession();
             }
         }
         return $this->userLog;
