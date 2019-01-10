@@ -12,8 +12,8 @@
         {% for menuElement in menuElements %}
             <form method="post">
             {% include 'partial/menuElement.twig' with { menu : menuElement } %}
-        {% endfor %}
             </form>
+        {% endfor %}
 
         {% if session.loggedIn==false %}
             {% block logModule %}
@@ -48,6 +48,15 @@
     </div>
 
     <div class="teszt3" style="height: 85%; width: 25%; background-color: #9fcdff; float: left;">
+        {% block onlineUsersList %}
+            ONLINE NOW:
+            {% for value in onlineUsers %}
+            <form method="post">
+                {%  include 'modules/onlineUsers.twig' with { onlineList : value } %}
+            </form>
+            {% endfor %}
+        {% endblock %}
+
         {% block newsmodule %}
             (+ {{ session.username }} +)
         {% endblock %}

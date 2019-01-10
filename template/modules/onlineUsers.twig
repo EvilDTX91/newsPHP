@@ -1,0 +1,7 @@
+{% block onlineUsersList %}
+    <div>
+        <label>Name:</label>
+        <li><a href="{{ menu.href }}"><input type="submit" name="userProfile" value="{{ onlineList.username }}"/></a></li>
+        <label>{{ onlineList.username }}</label>
+    </div>
+{% endblock %}

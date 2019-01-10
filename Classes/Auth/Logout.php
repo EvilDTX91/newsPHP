@@ -14,7 +14,6 @@ class Logout
             $this->setConnectionDriver(new Connection);
             $deleteSession = new UserSession;
             $deleteSession->deleteUserSession();
-            session_destroy();
         }
     }
 

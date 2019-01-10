@@ -41,7 +41,8 @@ $test = [
         'z' => 'z3'
     ]
 ];
-
+$onlineUsers = new NewsPhp\SocialNetwork\onlineUsers;
+$onlineUsersList = $onlineUsers->loadOnlineUseres();
 
 $loader = "";
 if (isset($_POST['userProfile'])) {
@@ -106,5 +107,6 @@ $twig->display('index.twig',
         'menuElements' => $menuElements,
         'articles' => $result,
         'test' => $test,
-        'loader' => $loader
+        'loader' => $loader,
+        'onlineUsers' => $onlineUsersList
     ]);
