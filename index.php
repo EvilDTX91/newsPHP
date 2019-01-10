@@ -11,16 +11,16 @@ $menuElements = [
         'href' => ""
     ],
     [
-        'name' => 2,
+        'name' => "Profile",
         'href' => 2
     ],
     [
-        'name' => 3,
+        'name' => "SendNews",
         'href' => 3
     ],
     [
-        'name' => 4,
-        'href' => 4
+        'name' => "LogOut",
+        'href' => "userLogOut"
     ]
 ];
 

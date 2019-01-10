@@ -19,8 +19,9 @@ VALUES ('" . $_SESSION['sessionID'] . "','" . $_SESSION['username'] . "','" . $_
     public function deleteUserSession()
     {
         $this->setConnectionDriver(new Connection);
-        $username = $_SESSION['username'];
-        $sql = "DELETE * FROM sessions where username='" . $_SESSION['username'] . "'";
+        //$username = $_SESSION['username'];
+        echo "Delete user session!";
+        $sql = "DELETE * FROM sessions WHERE username='" . $_SESSION['username'] . "'";
         $this->getConnectionDriver()->getConnection()->query($sql);
     }
 

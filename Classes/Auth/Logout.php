@@ -11,7 +11,6 @@ class Logout
     public function logOut()
     {
         if (isset($_SESSION['username'])) {
-            echo "LOGOUT " . $_SESSION['username'] . "</br>";
             $this->setConnectionDriver(new Connection);
             $deleteSession = new UserSession;
             $deleteSession->deleteUserSession();

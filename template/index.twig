@@ -10,8 +10,10 @@
         {% endautoescape %}
 
         {% for menuElement in menuElements %}
+            <form method="post">
             {% include 'partial/menuElement.twig' with { menu : menuElement } %}
         {% endfor %}
+            </form>
 
         {% if session.loggedIn==false %}
             {% block logModule %}
