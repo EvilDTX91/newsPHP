@@ -7,20 +7,20 @@ $twig = new Twig_Environment(new Twig_Loader_Filesystem('template/'));
 
 $menuElements = [
     [
-        'name' => "Fooldal!",
-        'href' => ""
+        'name' => 'Fooldal!',
+        'href' => ''
     ],
     [
-        'name' => "Profile",
+        'name' => 'Profile',
         'href' => 2
     ],
     [
-        'name' => "SendNews",
+        'name' => 'SendNews',
         'href' => 3
     ],
     [
-        'name' => "LogOut",
-        'href' => "userLogOut"
+        'name' => 'LogOut',
+        'href' => 'userLogOut'
     ]
 ];
 
@@ -44,7 +44,7 @@ $test = [
 $onlineUsers = new NewsPhp\SocialNetwork\onlineUsers;
 $onlineUsersList = $onlineUsers->loadOnlineUseres();
 
-$loader = "";
+$loader = '';
 if (isset($_POST['userProfile'])) {
     $loader = "modules/profile.twig";
 }
@@ -81,7 +81,6 @@ if (isset($_POST['userUploadNews'])) {
 if (isset($_POST['sendSignUp'])) {
     echo 'register<br>';
     $dateofbirth = join('', $_POST['DateOfBirth']);
-    echo $dateofbirth . "<br>";
 
     $registerUserData = new \NewsPhp\Auth\Register\UserData;
 

@@ -43,8 +43,20 @@ class Register
             $lastname,
             $dateofbirth
         );
+        $sql = $statement->execute();
 
-        $statement->execute();
+        if($sql) {
+            echo "Succes!";
+        }
+        else {
+            echo $username . "</br>";
+            echo $password . "</br>";
+            echo $email . "</br>";
+            echo $firstname . "</br>";
+            echo $lastname . "</br>";
+            echo $dateofbirth . "</br>";
+            echo "ERROR: DATA UPLOAD UNSUCCESFULL!:";
+        }
     }
 
     /**

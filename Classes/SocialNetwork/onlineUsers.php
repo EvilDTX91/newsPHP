@@ -20,7 +20,12 @@ class onlineUsers
                 $onlineUser[] = $row;
             }
         }
-        return $onlineUser;
+        if(isset($onlineUser)){
+            return $onlineUser;
+        }
+        else{
+            return "Nobody!";
+        }
     }
     /**
      * @return mixed
