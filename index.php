@@ -84,8 +84,8 @@ if (isset($_POST['sendSignUp'])) {
 
     $registerUserData = new \NewsPhp\Auth\Register\UserData;
 
-    $registerUserData->setUSERNAME($_POST['username']);
-    $registerUserData->setPASSWORD($_POST['password']);
+    $registerUserData->setUSERNAME($_POST['signUpusername']);
+    $registerUserData->setPASSWORD($_POST['signUppassword']);
     $registerUserData->setEMAIL($_POST['email']);
     $registerUserData->setFIRSTNAME($_POST['firstname']);
     $registerUserData->setLASTNAME($_POST['lastname']);
