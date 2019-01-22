@@ -3,137 +3,269 @@
         <form method="POST" id="signUpForm">
             <div>
                 <label for="firstname">Firstname:</label>
-                <input type="text" id="firstname" name="firstname"/>
-                <lebel for="firstnameError" id="firstnameError" style="color: red; display: none;"></lebel>
+                <input type="text" id="firstname" name="firstname" onchange="signUpFirstNameValidator()"/>
+                <label for="firstnameError" id="firstnameError" style="color: red; display: none;"></label>
             </div>
             <div>
                 <label for="lastname">Lastname:</label>
-                <input type="text" id="lastname" name="lastname"/>
-                <lebel for="lastnameError" id="lastnameError" style="color: red; display: none;"></lebel>
+                <input type="text" id="lastname" name="lastname" onchange="signUpLastNameValidator()"/>
+                <lebel for="lastnameError" id="lastnameError" style="color: red; display: none;"></label>
             </div>
             <div>
                 <label for="signUpusername">Username: </label>
-                <input type="text" id="signUpusername" name="signUpusername"/>
-                <lebel for="signUpusernameError" id="signUpusernameError" style="color: red; display: none;"></lebel>
+                <input type="text" id="signUpusername" name="signUpusername" onchange="signUpUserNameValidator()"/>
+                <label for="signUpusernameError" id="signUpusernameError" style="color: red; display: none;"></label>
             </div>
             <div>
                 <label for="signUppassword">Password: </label>
-                <input type="password" id="signUppassword" name="signUppassword"/>
-                <lebel for="signUppasswordError" id="signUppasswordError" style="color: red; display: none;"></lebel>
+                <input type="password" id="signUppassword" name="signUppassword" onchange="signUpPasswordValidator()"/>
+                <label for="signUppasswordError" id="signUppasswordError" style="color: red; display: none;"></label>
             </div>
             <div>
                 <label for="repassword">Re-Password: </label>
-                <input type="password" id="repassword" name="repassword"/>
-                <lebel for="repasswordError" id="repasswordError" style="color: red; display: none;"></lebel>
+                <input type="password" id="repassword" name="repassword" onchange="signUpRePasswordValidator()"/>
+                <label for="repasswordError" id="repasswordError" style="color: red; display: none;"></label>
             </div>
             <div>
                 <label for="email">E-mail: </label>
-                <input type="email" id="email" name="email"/>
-                <lebel for="emailError" id="emailError" style="color: red; display: none;"></lebel>
+                <input type="email" id="email" name="email" onchange="signUpEmailValidator()"/>
+                <label for="emailError" id="emailError" style="color: red; display: none;"></label>
             </div>
             <div>
                 <label for="dateofbirth">Date Of Birth: </label>
+                <select id="dateOfBirthYear">
+                    <script>
+                        var year = new Date().getFullYear();
+
+                        for (var i = year; i > 1900; i--) {
+                            var j = 0;
+                            var x = document.getElementById("dateOfBirthYear");
+                            var c = document.createElement("option");
+                            c.text = i;
+                            x.options.add(c, j);
+                            j++;
+                        }</script>
+                </select>
+                <select id="dateOfBirthMonth">
+                    <script>
+                        var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Oktober", "November", "December"];
+                        for (var i = 0; i < 12; i++) {
+                            var j = 0;
+                            var x = document.getElementById("dateOfBirthMonth");
+                            var c = document.createElement("option");
+                            c.text = month[i];
+                            x.options.add(c, j);
+                            j++;
+                        }</script>
+                </select>
+                <select id="dateOfBirthDay">
+                    <script>
+                        var month = document.getElementById("dateOfBirthMonth");
+                        if (month == "Febuary") {
+                            for (var i = 1; i <= 28; i++) {
+                                var j = 0;
+                                var x = document.getElementById("dateOfBirthDay");
+                                var c = document.createElement("option");
+                                c.text = i;
+                                x.options.add(c, j);
+                                j++;
+                            }
+                        }
+                        else
+                            {
+                                for (var i = 1; i < 32; i++) {
+                                    var j = 0;
+                                    var x = document.getElementById("dateOfBirthDay");
+                                    var c = document.createElement("option");
+                                    c.text = i;
+                                    x.options.add(c, j);
+                                    j++;
+                                }
+                            }
+                        </script>
+                </select>
                 <input type="text" id="dateofbirth" name="DateOfBirth[Year]" size="2" maxlength="4"/>
                 <input type="text" name="DateOfBirth[Month]" size="1" maxlength="2"/>
                 <input type="text" name="DateOfBirth[Day]" size="1" maxlength="2"/>
             </div>
             <div>
-                <button type="button" name="ok" onclick="signUpValidator()">OK!</button>
-                <input type="submit" name="sendSignUp" onclick="signUpValidator()" value="Register"/>
+                <button type="button" name="ok" onclick="allValidator()">OK!</button>
+                <input type="submit" id="sendSignUp" name="sendSignUp" onclick="allValidator()" value="Register"/>
                 <input type="reset" name="resetSignUp" value="Reset"/>
             </div>
         </form>
     </div>
-<script>
-    function signUpValidator() {
-    var firstname = document.getElementById('firstname').value;
-    var lastname = document.getElementById('lastname').value;
-    var username = document.getElementById('signUpusername').value;
-    var password = document.getElementById('signUppassword').value;
-    var repassword = document.getElementById('repassword').value;
-    var email = document.getElementById('email').value;
-    /*var DateOfBirthYear = document.getElementById('DateOfBirth[Year]').value;
-    var DateOfBirthMonth = document.getElementById('DateOfBirth[Month]').value;
-    var DateOfBirthDay = document.getElementById('DateOfBirth[Day]').value;*/
+    <script>
+        function
+        allValidator() {
+            signUpFirstNameValidator();
+            signUpLastNameValidator();
+            signUpUserNameValidator();
+            signUpPasswordValidator();
+            signUpRePasswordValidator();
+            signUpEmailValidator();
+        }
 
-    if(firstname === ""){
-            document.getElementById('firstname').style.border='solid red';
-            document.getElementById('firstnameError').style.display='block';
-            document.getElementById('firstnameError').innerHTML='Please enter your firstname!';
-        }
-        else {
-            document.getElementById('firstname').style.border='solid green';
-            document.getElementById('firstnameError').style.display='none';
-    }
+        function
+        dateOfBirthYear() {
+            var year = new Date().getFullYear();
 
-    if(lastname === ""){
-            document.getElementById('lastname').style.border='solid red';
-            document.getElementById('lastnameError').style.display='block';
-            document.getElementById('lastnameError').innerHTML='Please enter your lastname!';
+            for (var i = year; i > 1900; i--) {
+                var j = 0;
+                var x = document.getElementById("dateOfBirthYear");
+                var c = document.createElement("option");
+                c.text = i;
+                x.options.add(c, j);
+                j++;
+            }
         }
-        else {
-            document.getElementById('lastname').style.border='solid green';
-            document.getElementById('lastnameError').style.display='none';
-    }
 
-    if(username === ""){
-            document.getElementById('signUpusername').style.border='solid red';
-            document.getElementById('signUpusernameError').style.display='block';
-            document.getElementById('signUpusernameError').innerHTML='Please enter your username!';
-        }
-        else {
-            document.getElementById('signUpusername').style.border='solid green';
-            document.getElementById('signUpusernameError').style.display='none';
-    }
+        function
+        signUpFirstNameValidator() {
+            var firstname = document.getElementById('firstname').value;
 
-    if(password === ""){
-            document.getElementById('signUppassword').style.border='solid red';
-            document.getElementById('signUppasswordError').style.display='block';
-            document.getElementById('signUppasswordError').innerHTML='Please enter a password!';
+            if (firstname != '') {
+                document.getElementById('firstname').style.border = 'solid green';
+                document.getElementById('firstnameError').style.display = 'none';
+                document.getElementById('sendSignUp').disabled = false;
+            }
+            else {
+                document.getElementById('firstname').style.border = 'solid red';
+                document.getElementById('firstnameError').style.display = 'block';
+                document.getElementById('firstnameError').innerHTML = 'Please enter your first name!';
+                document.getElementById('sendSignUp').disabled = true;
+            }
         }
-        else {
-            document.getElementById('signUppassword').style.border='solid green';
-            document.getElementById('signUppasswordError').style.display='none';
-    }
 
-    if(repassword === ""){
-            document.getElementById('repassword').style.border='solid red';
-            document.getElementById('repasswordError').style.display='block';
-            document.getElementById('repasswordError').innerHTML='Please enter re-password!';
-        }
-        else {
-            document.getElementById('repassword').style.border='solid green';
-            document.getElementById('repasswordError').style.display='none';
+        function
+        signUpLastNameValidator() {
+            var lastname = document.getElementById('lastname').value;
 
-        if(password !== repassword)
-        {
-            document.getElementById('signUppassword').style.border='solid red';
-            document.getElementById('signUppasswordError').style.display='block';
-            document.getElementById('signUppasswordError').innerHTML='Passwords not equals!';
-            document.getElementById('repassword').style.border='solid red';
-            document.getElementById('repasswordError').style.display='block';
-            document.getElementById('repasswordError').innerHTML='Wrong re-password!';
+            if (lastname != '') {
+                document.getElementById('lastname').style.border = 'solid green';
+                document.getElementById('lastnameError').style.display = 'none';
+                document.getElementById('sendSignUp').disabled = false;
+            }
+            else {
+                document.getElementById('lastname').style.border = 'solid red';
+                document.getElementById('lastnameError').style.display = 'block';
+                document.getElementById('lastnameError').innerHTML = 'Please enter your last name!';
+                document.getElementById('sendSignUp').disabled = true;
+            }
         }
-        else {
-            document.getElementById('signUppassword').style.border='solid green';
-            document.getElementById('signUppasswordError').style.display='none';
-            document.getElementById('repassword').style.border='solid green';
-            document.getElementById('repasswordError').style.display='none';
-        }
-    }
 
-        if(email === ""){
-            document.getElementById('email').style.border='solid red';
-            document.getElementById('emailError').style.display='block';
-            document.getElementById('emailError').innerHTML='Please enter your email!';
+        function
+        signUpUserNameValidator() {
+            var username = document.getElementById('signUpusername').value;
+
+            if (username != '') {
+                document.getElementById('signUpusername').style.border = 'solid green';
+                document.getElementById('signUpusernameError').style.display = 'none';
+                document.getElementById('sendSignUp').disabled = false;
+            }
+            else {
+                document.getElementById('signUpusername').style.border = 'solid red';
+                document.getElementById('signUpusernameError').style.display = 'block';
+                document.getElementById('signUpusernameError').innerHTML = 'Please enter your username name!';
+                document.getElementById('sendSignUp').disabled = true;
+            }
         }
-        else {
-            document.getElementById('email').style.border='solid green';
-            document.getElementById('emailError').style.display='none';
+
+        function
+        signUpPasswordValidator() {
+            var password = document.getElementById('signUppassword').value;
+            var numbers = /[0-9]/g;
+            var lowerCase = /[a-z]/g;
+            var upperCase = /[A-Z]/g;
+
+            if (password != '') {
+                if (password.length > 5) {
+                    if (password.match(numbers) && password.match(lowerCase) && password.match(upperCase)) {
+                        document.getElementById('signUppassword').style.border = 'solid green';
+                        document.getElementById('signUppasswordError').style.display = 'none';
+                        document.getElementById('sendSignUp').disabled = false;
+                    }
+                    else {
+                        document.getElementById('signUppassword').style.border = 'solid red';
+                        document.getElementById('signUppasswordError').style.display = 'block';
+                        document.getElementById('signUppasswordError').innerHTML = 'At least one number, one lowercase, one uppercase needed!';
+                        document.getElementById('sendSignUp').disabled = true;
+                    }
+                }
+                else {
+                    document.getElementById('signUppassword').style.border = 'solid red';
+                    document.getElementById('signUppasswordError').style.display = 'block';
+                    document.getElementById('signUppasswordError').innerHTML = 'At least 6 character with number(s)';
+                    document.getElementById('sendSignUp').disabled = true;
+                }
+            }
+            else {
+                document.getElementById('signUppassword').style.border = 'solid red';
+                document.getElementById('signUppasswordError').style.display = 'block';
+                document.getElementById('signUppasswordError').innerHTML = 'Please enter a password!';
+                document.getElementById('sendSignUp').disabled = true;
+            }
         }
-    }
-    function returnToPreviousPage() {
-        window.history.back();
-    }
-</script>
+
+        function
+        signUpRePasswordValidator() {
+            var rePassword = document.getElementById('repassword').value;
+            var password = document.getElementById('signUppassword').value;
+
+            if (rePassword != '') {
+                if (password == rePassword) {
+
+                    document.getElementById('repassword').style.border = 'solid green';
+                    document.getElementById('repasswordError').style.display = 'none';
+                    document.getElementById('sendSignUp').disabled = false;
+                }
+                else {
+                    document.getElementById('repassword').style.border = 'solid red';
+                    document.getElementById('repasswordError').style.display = 'block';
+                    document.getElementById('repasswordError').innerHTML = 'Entered password not equals! Try again!';
+                    document.getElementById('sendSignUp').disabled = true;
+                }
+            }
+            else {
+                document.getElementById('repassword').style.border = 'solid red';
+                document.getElementById('repasswordError').style.display = 'block';
+                document.getElementById('repasswordError').innerHTML = 'Please enter your password again!';
+                document.getElementById('sendSignUp').disabled = true;
+            }
+        }
+
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        function
+        signUpEmailValidator() {
+            var email = document.getElementById('email').value;
+
+            if (email != '') {
+                if (validateEmail(email)) {
+                    document.getElementById('email').style.border = 'solid green';
+                    document.getElementById('emailError').style.display = 'none';
+                    document.getElementById('sendSignUp').disabled = false;
+                } else {
+                    document.getElementById('email').style.border = 'solid red';
+                    document.getElementById('emailError').style.display = 'block';
+                    document.getElementById('emailError').innerHTML = 'Entered e-mail is not valid!';
+                    document.getElementById('sendSignUp').disabled = true;
+                }
+            }
+            else {
+                document.getElementById('email').style.border = 'solid red';
+                document.getElementById('emailError').style.display = 'block';
+                document.getElementById('emailError').innerHTML = 'Please enter your email!';
+                document.getElementById('sendSignUp').disabled = true;
+
+            }
+        }
+
+        function returnToPreviousPage() {
+            window.history.back();
+        }
+    </script>
 {% endblock %}
